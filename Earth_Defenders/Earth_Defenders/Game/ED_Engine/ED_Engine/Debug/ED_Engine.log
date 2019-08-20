@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\108158\desktop\ed_engine\ed_engine\main.cpp(25): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdlib.h(1266): note: Siehe Deklaration von "_sleep"
+  ED_Engine.vcxproj -> C:\Users\108158\Desktop\ED_Engine\Debug\ED_Engine.exe
