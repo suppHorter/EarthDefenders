@@ -4,7 +4,9 @@
 
 class Game {
 	private:
-		Player player;
+		Player player; 
+		uint16_t xBounds = 240;
+		uint16_t yBounds = 320;
 
 	public:
 		Game();

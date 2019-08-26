@@ -5,7 +5,7 @@ Game::Game() {
 
 void Game::startGame()
 {
-	this->player = Player(40, 40);
+	this->player = Player(this->xBounds / 2, this->yBounds - 50);
 }
 
 void Game::setPlayerPos(uint8_t x) {

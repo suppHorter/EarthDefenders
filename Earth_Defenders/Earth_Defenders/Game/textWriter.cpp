@@ -23,11 +23,11 @@ void TextWriter::drawChar(char c) {
 	if (c == ' ') {c = 64;}
 	uint8_t arrayIndex = c - 64;
 
-	if (this->cursorX <= 10) {
-		this->cursorX = ILI9341_TFTWIDTH-10;
-		this->cursorY -= 10;
+	if (this->cursorX > ILI9341_TFTWIDTH-10) {
+		this->cursorX = 10;
+		this->cursorY += 10;
 	} else {
-		this->cursorX -= 10;
+		this->cursorX += 10;
 	}
 	drawBitmapChar(this->cursorX, this->cursorY, arrayIndex);
 }

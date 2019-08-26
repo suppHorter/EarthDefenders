@@ -89,7 +89,7 @@ void getPoint(uint16_t *p_X, uint16_t *p_Y)
 	}
 
 
-	*p_X = x / 19;
+	*p_X = x / 20;
 	*p_Y = y / 15;
 }
 

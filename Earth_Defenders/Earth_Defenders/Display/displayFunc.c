@@ -6,7 +6,7 @@
 #define PLAYERLEN 113
 
 //cooles Schiff:
-uint8_t playerBitmap[PLAYERLEN] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,16,241,0,0,67,196,0,17,15,17,0,100,126,76,1,147,109,48,7,121,157,64,31,246,253,0,127,255,244,1,243,252,240,3,231,231,128,7,207,60,0,15,153,224,0,31,111,0,0,61,184,0,0,118,192,0,0,254,0,0,1,240,0,0,3,128,0,0,4,0,0,0,16,0,0,0,0,0};// uint8_t playerBitmap[PLAYERLEN] = {0,0,0,0,0,3,128,7,199,143,143,31,30,56,56,0,0,128,65,1,131,3,7,140,3,240,1,224,0};uint8_t charBitmap[27][13] = {	{0,0,0,0,0,0,0,0,0,0,0,0,0},						// 	{0,15,7,225,152,102,31,135,225,152,102,0,0},		// A
+uint8_t playerBitmap[PLAYERLEN] = {0,6,0,0,0,60,0,0,1,248,0,0,6,96,0,0,16,128,0,0,66,0,0,129,8,16,2,7,224,64,8,25,129,0,112,102,14,1,67,252,40,5,14,112,160,20,249,242,128,127,255,254,1,207,255,56,6,60,28,96,51,247,124,193,147,221,201,142,143,7,23,60,253,255,60,228,247,242,115,163,223,197,207,63,255,207,57,255,255,156,238,239,119,115,241,60,143,199,132,242,30,12,19,200,48,48,6,0,192,0,0,0};// uint8_t playerBitmap[PLAYERLEN] = {0,0,0,0,0,3,128,7,199,143,143,31,30,56,56,0,0,128,65,1,131,3,7,140,3,240,1,224,0};uint8_t charBitmap[27][13] = {	{0,0,0,0,0,0,0,0,0,0,0,0,0},						// 	{0,15,7,225,152,102,31,135,225,152,102,0,0},		// A
 	{0,62,12,195,48,248,51,12,195,48,248,0,0},			// B
 	{0,31,14,99,24,192,48,12,99,152,124,0,0 },			// C
 	{0,63,12,99,12,195,48,204,51,24,252,0,0},			// D
@@ -226,13 +226,14 @@ void fillRect (uint16_t x0, uint16_t y0, uint16_t w, uint16_t h, uint16_t color)
 
 void writeBitmap(uint8_t data[], uint32_t count, uint16_t col)
 {
-	uint8_t bitMask = 0x01;
-	for(;count>0;count--)
+	uint8_t bitMask = 128;
+	uint32_t i = 0;
+	for(;i<count;i++)
 	{
-		bitMask = 0x01;
+		bitMask = 128;
 		while (bitMask) 
 		{
-			if ((data[count] & bitMask))
+			if ((data[i] & bitMask))
 			{
 				writeWord(col);	 //send col1
 			}
@@ -240,7 +241,7 @@ void writeBitmap(uint8_t data[], uint32_t count, uint16_t col)
 			{
 				writeWord(BLACK);	 //send col2
 			}
-			bitMask = (bitMask << 1);
+			bitMask = (bitMask >> 1);
 		}
 	}
 }
@@ -262,7 +263,7 @@ void drawBitmapChar(uint16_t x, uint16_t y, uint8_t charArrayIndex)
 	{
 		spiStartWrite();
 		setAddrWindow(x, y, 10, 10); // set active region = 1 pixel
-		writeBitmap(charBitmap[charArrayIndex], 10 * 10, WHITE); // send color for this pixel
+		writeBitmap(charBitmap[charArrayIndex], 10, WHITE); // send color for this pixel
 		spiEndWrite();
 	}
 }
