@@ -1,0 +1,2180 @@
+
+Earth_Defenders.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000222  00800100  00000cf4  00000d88  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000cf4  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  00800322  00800322  00000faa  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000faa  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000fdc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000268  00000000  00000000  0000101c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000331c  00000000  00000000  00001284  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000148e  00000000  00000000  000045a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001397  00000000  00000000  00005a2e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000066c  00000000  00000000  00006dc8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000009ca  00000000  00000000  00007434  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001515  00000000  00000000  00007dfe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000200  00000000  00000000  00009313  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	13 e0       	ldi	r17, 0x03	; 3
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e4 ef       	ldi	r30, 0xF4	; 244
+  7c:	fc e0       	ldi	r31, 0x0C	; 12
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a2 32       	cpi	r26, 0x22	; 34
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	23 e0       	ldi	r18, 0x03	; 3
+  8c:	a2 e2       	ldi	r26, 0x22	; 34
+  8e:	b3 e0       	ldi	r27, 0x03	; 3
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a8 32       	cpi	r26, 0x28	; 40
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 e3 05 	call	0xbc6	; 0xbc6 <main>
+  9e:	0c 94 78 06 	jmp	0xcf0	; 0xcf0 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <resetDisplay>:
+	writeByte(0x80);
+}
+
+void resetDisplay()	
+{
+	rstport |=(1<<rst);			//pull high if low previously
+  a6:	5f 9a       	sbi	0x0b, 7	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a8:	2f ef       	ldi	r18, 0xFF	; 255
+  aa:	83 ec       	ldi	r24, 0xC3	; 195
+  ac:	99 e0       	ldi	r25, 0x09	; 9
+  ae:	21 50       	subi	r18, 0x01	; 1
+  b0:	80 40       	sbci	r24, 0x00	; 0
+  b2:	90 40       	sbci	r25, 0x00	; 0
+  b4:	e1 f7       	brne	.-8      	; 0xae <resetDisplay+0x8>
+  b6:	00 c0       	rjmp	.+0      	; 0xb8 <resetDisplay+0x12>
+  b8:	00 00       	nop
+	_delay_ms(200);
+	rstport &=~(1<<rst);		//low for reset
+  ba:	5f 98       	cbi	0x0b, 7	; 11
+  bc:	2f ef       	ldi	r18, 0xFF	; 255
+  be:	83 ec       	ldi	r24, 0xC3	; 195
+  c0:	99 e0       	ldi	r25, 0x09	; 9
+  c2:	21 50       	subi	r18, 0x01	; 1
+  c4:	80 40       	sbci	r24, 0x00	; 0
+  c6:	90 40       	sbci	r25, 0x00	; 0
+  c8:	e1 f7       	brne	.-8      	; 0xc2 <resetDisplay+0x1c>
+  ca:	00 c0       	rjmp	.+0      	; 0xcc <resetDisplay+0x26>
+  cc:	00 00       	nop
+	_delay_ms(200);
+	rstport |=(1<<rst);			//again pull high for normal operation
+  ce:	5f 9a       	sbi	0x0b, 7	; 11
+  d0:	2f ef       	ldi	r18, 0xFF	; 255
+  d2:	83 ec       	ldi	r24, 0xC3	; 195
+  d4:	99 e0       	ldi	r25, 0x09	; 9
+  d6:	21 50       	subi	r18, 0x01	; 1
+  d8:	80 40       	sbci	r24, 0x00	; 0
+  da:	90 40       	sbci	r25, 0x00	; 0
+  dc:	e1 f7       	brne	.-8      	; 0xd6 <resetDisplay+0x30>
+  de:	00 c0       	rjmp	.+0      	; 0xe0 <resetDisplay+0x3a>
+  e0:	00 00       	nop
+  e2:	08 95       	ret
+
+000000e4 <initDisplay>:
+	_delay_ms(200);
+}
+
+void initDisplay()
+{
+	resetDisplay();
+  e4:	0e 94 53 00 	call	0xa6	; 0xa6 <resetDisplay>
+	rstddr=0xFF;				//output for reset
+  e8:	8f ef       	ldi	r24, 0xFF	; 255
+  ea:	8a b9       	out	0x0a, r24	; 10
+	rstport |=(1<<rst);			//pull high for normal operation
+  ec:	5f 9a       	sbi	0x0b, 7	; 11
+	controlddr|=(1<<dc);		//D/C as output
+  ee:	21 9a       	sbi	0x04, 1	; 4
+  f0:	08 95       	ret
+
+000000f2 <controller_begin>:
+uint8_t Stern[7]={146,81,207,231,21,73,0};
+
+
+void controller_begin() 
+{
+	spiInitMaster();
+  f2:	0e 94 54 03 	call	0x6a8	; 0x6a8 <spiInitMaster>
+	initDisplay();
+  f6:	0e 94 72 00 	call	0xe4	; 0xe4 <initDisplay>
+	//soft reset
+	writeCmd(0x01);
+  fa:	81 e0       	ldi	r24, 0x01	; 1
+  fc:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+ 100:	2f ef       	ldi	r18, 0xFF	; 255
+ 102:	83 ed       	ldi	r24, 0xD3	; 211
+ 104:	90 e3       	ldi	r25, 0x30	; 48
+ 106:	21 50       	subi	r18, 0x01	; 1
+ 108:	80 40       	sbci	r24, 0x00	; 0
+ 10a:	90 40       	sbci	r25, 0x00	; 0
+ 10c:	e1 f7       	brne	.-8      	; 0x106 <controller_begin+0x14>
+ 10e:	00 c0       	rjmp	.+0      	; 0x110 <controller_begin+0x1e>
+ 110:	00 00       	nop
+	_delay_ms(1000);
+
+	//power control A
+	writeCmd(0xCB);
+ 112:	8b ec       	ldi	r24, 0xCB	; 203
+ 114:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x39);
+ 118:	89 e3       	ldi	r24, 0x39	; 57
+ 11a:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x2C);
+ 11e:	8c e2       	ldi	r24, 0x2C	; 44
+ 120:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x00);
+ 124:	80 e0       	ldi	r24, 0x00	; 0
+ 126:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x34);
+ 12a:	84 e3       	ldi	r24, 0x34	; 52
+ 12c:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x02);
+ 130:	82 e0       	ldi	r24, 0x02	; 2
+ 132:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//power control B
+	writeCmd(0xCF);
+ 136:	8f ec       	ldi	r24, 0xCF	; 207
+ 138:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x00);
+ 13c:	80 e0       	ldi	r24, 0x00	; 0
+ 13e:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0xC1);
+ 142:	81 ec       	ldi	r24, 0xC1	; 193
+ 144:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x30);
+ 148:	80 e3       	ldi	r24, 0x30	; 48
+ 14a:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//driver timing control A
+	writeCmd(0xE8);
+ 14e:	88 ee       	ldi	r24, 0xE8	; 232
+ 150:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x85);
+ 154:	85 e8       	ldi	r24, 0x85	; 133
+ 156:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x00);
+ 15a:	80 e0       	ldi	r24, 0x00	; 0
+ 15c:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x78);
+ 160:	88 e7       	ldi	r24, 0x78	; 120
+ 162:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//driver timing control B
+	writeCmd(0xEA);
+ 166:	8a ee       	ldi	r24, 0xEA	; 234
+ 168:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x00);
+ 16c:	80 e0       	ldi	r24, 0x00	; 0
+ 16e:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x00);
+ 172:	80 e0       	ldi	r24, 0x00	; 0
+ 174:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//power on sequence control
+	writeCmd(0xED);
+ 178:	8d ee       	ldi	r24, 0xED	; 237
+ 17a:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x64);
+ 17e:	84 e6       	ldi	r24, 0x64	; 100
+ 180:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x03);
+ 184:	83 e0       	ldi	r24, 0x03	; 3
+ 186:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x12);
+ 18a:	82 e1       	ldi	r24, 0x12	; 18
+ 18c:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x81);
+ 190:	81 e8       	ldi	r24, 0x81	; 129
+ 192:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//pump ratio control
+	writeCmd(0xF7);
+ 196:	87 ef       	ldi	r24, 0xF7	; 247
+ 198:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x20);
+ 19c:	80 e2       	ldi	r24, 0x20	; 32
+ 19e:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//power control,VRH[5:0]
+	writeCmd(ILI9341_PWCTR1);
+ 1a2:	80 ec       	ldi	r24, 0xC0	; 192
+ 1a4:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x23);
+ 1a8:	83 e2       	ldi	r24, 0x23	; 35
+ 1aa:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//Power control,SAP[2:0];BT[3:0]
+	writeCmd(ILI9341_PWCTR1);
+ 1ae:	80 ec       	ldi	r24, 0xC0	; 192
+ 1b0:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x10);
+ 1b4:	80 e1       	ldi	r24, 0x10	; 16
+ 1b6:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//vcm control
+	writeCmd(ILI9341_VMCTR1);
+ 1ba:	85 ec       	ldi	r24, 0xC5	; 197
+ 1bc:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x3E);
+ 1c0:	8e e3       	ldi	r24, 0x3E	; 62
+ 1c2:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x28);
+ 1c6:	88 e2       	ldi	r24, 0x28	; 40
+ 1c8:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//vcm control 2
+	writeCmd(ILI9341_VMCTR2);
+ 1cc:	87 ec       	ldi	r24, 0xC7	; 199
+ 1ce:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x86);
+ 1d2:	86 e8       	ldi	r24, 0x86	; 134
+ 1d4:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//memory access control
+	writeCmd(ILI9341_MADCTL);
+ 1d8:	86 e3       	ldi	r24, 0x36	; 54
+ 1da:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x48); // 0100 1000
+ 1de:	88 e4       	ldi	r24, 0x48	; 72
+ 1e0:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	
+	//vertical Scroll
+	writeCmd(ILI9341_VSCRSADD);
+ 1e4:	87 e3       	ldi	r24, 0x37	; 55
+ 1e6:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x00);
+ 1ea:	80 e0       	ldi	r24, 0x00	; 0
+ 1ec:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//pixel format
+	writeCmd(ILI9341_PIXFMT);
+ 1f0:	8a e3       	ldi	r24, 0x3A	; 58
+ 1f2:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x55);
+ 1f6:	85 e5       	ldi	r24, 0x55	; 85
+ 1f8:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//frameration control,normal mode full colours
+	writeCmd(ILI9341_FRMCTR1);
+ 1fc:	81 eb       	ldi	r24, 0xB1	; 177
+ 1fe:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x00);
+ 202:	80 e0       	ldi	r24, 0x00	; 0
+ 204:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x18);
+ 208:	88 e1       	ldi	r24, 0x18	; 24
+ 20a:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//display function control
+	writeCmd(ILI9341_DFUNCTR);
+ 20e:	86 eb       	ldi	r24, 0xB6	; 182
+ 210:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x08);
+ 214:	88 e0       	ldi	r24, 0x08	; 8
+ 216:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x82);
+ 21a:	82 e8       	ldi	r24, 0x82	; 130
+ 21c:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x27);
+ 220:	87 e2       	ldi	r24, 0x27	; 39
+ 222:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//3gamma function disable
+	writeCmd(0xF2);
+ 226:	82 ef       	ldi	r24, 0xF2	; 242
+ 228:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x00);
+ 22c:	80 e0       	ldi	r24, 0x00	; 0
+ 22e:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//gamma curve selected
+	writeCmd(ILI9341_GAMMASET);
+ 232:	86 e2       	ldi	r24, 0x26	; 38
+ 234:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x01);
+ 238:	81 e0       	ldi	r24, 0x01	; 1
+ 23a:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//set positive gamma correction
+	writeCmd(ILI9341_GMCTRP1);
+ 23e:	80 ee       	ldi	r24, 0xE0	; 224
+ 240:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x0F);
+ 244:	8f e0       	ldi	r24, 0x0F	; 15
+ 246:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x31);
+ 24a:	81 e3       	ldi	r24, 0x31	; 49
+ 24c:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x2B);
+ 250:	8b e2       	ldi	r24, 0x2B	; 43
+ 252:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x0C);
+ 256:	8c e0       	ldi	r24, 0x0C	; 12
+ 258:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x0E);
+ 25c:	8e e0       	ldi	r24, 0x0E	; 14
+ 25e:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x08);
+ 262:	88 e0       	ldi	r24, 0x08	; 8
+ 264:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x4E);
+ 268:	8e e4       	ldi	r24, 0x4E	; 78
+ 26a:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0xF1);
+ 26e:	81 ef       	ldi	r24, 0xF1	; 241
+ 270:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x37);
+ 274:	87 e3       	ldi	r24, 0x37	; 55
+ 276:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x07);
+ 27a:	87 e0       	ldi	r24, 0x07	; 7
+ 27c:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x10);
+ 280:	80 e1       	ldi	r24, 0x10	; 16
+ 282:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x03);
+ 286:	83 e0       	ldi	r24, 0x03	; 3
+ 288:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x0E);
+ 28c:	8e e0       	ldi	r24, 0x0E	; 14
+ 28e:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x09);
+ 292:	89 e0       	ldi	r24, 0x09	; 9
+ 294:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x00);
+ 298:	80 e0       	ldi	r24, 0x00	; 0
+ 29a:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//set negative gamma correction
+	writeCmd(ILI9341_GMCTRN1);
+ 29e:	81 ee       	ldi	r24, 0xE1	; 225
+ 2a0:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x00);
+ 2a4:	80 e0       	ldi	r24, 0x00	; 0
+ 2a6:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x0E);
+ 2aa:	8e e0       	ldi	r24, 0x0E	; 14
+ 2ac:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x14);
+ 2b0:	84 e1       	ldi	r24, 0x14	; 20
+ 2b2:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x03);
+ 2b6:	83 e0       	ldi	r24, 0x03	; 3
+ 2b8:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x11);
+ 2bc:	81 e1       	ldi	r24, 0x11	; 17
+ 2be:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x07);
+ 2c2:	87 e0       	ldi	r24, 0x07	; 7
+ 2c4:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x31);
+ 2c8:	81 e3       	ldi	r24, 0x31	; 49
+ 2ca:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0xC1);
+ 2ce:	81 ec       	ldi	r24, 0xC1	; 193
+ 2d0:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x48);
+ 2d4:	88 e4       	ldi	r24, 0x48	; 72
+ 2d6:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x08);
+ 2da:	88 e0       	ldi	r24, 0x08	; 8
+ 2dc:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x0F);
+ 2e0:	8f e0       	ldi	r24, 0x0F	; 15
+ 2e2:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x0C);
+ 2e6:	8c e0       	ldi	r24, 0x0C	; 12
+ 2e8:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x31);
+ 2ec:	81 e3       	ldi	r24, 0x31	; 49
+ 2ee:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x36);
+ 2f2:	86 e3       	ldi	r24, 0x36	; 54
+ 2f4:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(0x0F);
+ 2f8:	8f e0       	ldi	r24, 0x0F	; 15
+ 2fa:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+
+	//exit sleep
+	writeCmd(ILI9341_SLPOUT);
+ 2fe:	81 e1       	ldi	r24, 0x11	; 17
+ 300:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+ 304:	2f ef       	ldi	r18, 0xFF	; 255
+ 306:	8b ed       	ldi	r24, 0xDB	; 219
+ 308:	95 e0       	ldi	r25, 0x05	; 5
+ 30a:	21 50       	subi	r18, 0x01	; 1
+ 30c:	80 40       	sbci	r24, 0x00	; 0
+ 30e:	90 40       	sbci	r25, 0x00	; 0
+ 310:	e1 f7       	brne	.-8      	; 0x30a <controller_begin+0x218>
+ 312:	00 c0       	rjmp	.+0      	; 0x314 <controller_begin+0x222>
+ 314:	00 00       	nop
+	_delay_ms(120);
+	writeByte(0x80);
+ 316:	80 e8       	ldi	r24, 0x80	; 128
+ 318:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	
+	//display on
+	writeCmd(ILI9341_DISPON);
+ 31c:	89 e2       	ldi	r24, 0x29	; 41
+ 31e:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeByte(0x80);
+ 322:	80 e8       	ldi	r24, 0x80	; 128
+ 324:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+ 328:	08 95       	ret
+
+0000032a <writeWord>:
+	rstport |=(1<<rst);			//pull high for normal operation
+	controlddr|=(1<<dc);		//D/C as output
+}
+
+void writeWord (uint16_t w)
+{
+ 32a:	cf 93       	push	r28
+ 32c:	c8 2f       	mov	r28, r24
+	writeByte(w >> 8);					// write upper 8 bits
+ 32e:	89 2f       	mov	r24, r25
+ 330:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+	writeByte(w & 0x00FF);				// write lower 8 bits
+ 334:	8c 2f       	mov	r24, r28
+ 336:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <writeByte>
+}
+ 33a:	cf 91       	pop	r28
+ 33c:	08 95       	ret
+
+0000033e <setAddrWindow>:
+
+//0x00 - 0x13F oder 0x00 - 0xEF
+void setAddrWindow(uint16_t x0, uint16_t y0, uint16_t w, uint16_t h)
+{
+ 33e:	cf 92       	push	r12
+ 340:	df 92       	push	r13
+ 342:	ef 92       	push	r14
+ 344:	ff 92       	push	r15
+ 346:	0f 93       	push	r16
+ 348:	1f 93       	push	r17
+ 34a:	cf 93       	push	r28
+ 34c:	df 93       	push	r29
+ 34e:	6c 01       	movw	r12, r24
+ 350:	7b 01       	movw	r14, r22
+ 352:	8a 01       	movw	r16, r20
+ 354:	e9 01       	movw	r28, r18
+	writeCmd(ILI9341_CASET); // Column addr set
+ 356:	8a e2       	ldi	r24, 0x2A	; 42
+ 358:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeWord(x0);
+ 35c:	c6 01       	movw	r24, r12
+ 35e:	0e 94 95 01 	call	0x32a	; 0x32a <writeWord>
+ 362:	c8 01       	movw	r24, r16
+ 364:	01 97       	sbiw	r24, 0x01	; 1
+	writeWord(x0 + w - 1);
+ 366:	8c 0d       	add	r24, r12
+ 368:	9d 1d       	adc	r25, r13
+ 36a:	0e 94 95 01 	call	0x32a	; 0x32a <writeWord>
+	writeCmd(ILI9341_PASET); // Row addr set
+ 36e:	8b e2       	ldi	r24, 0x2B	; 43
+ 370:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+	writeWord(y0);
+ 374:	c7 01       	movw	r24, r14
+ 376:	0e 94 95 01 	call	0x32a	; 0x32a <writeWord>
+ 37a:	ce 01       	movw	r24, r28
+ 37c:	01 97       	sbiw	r24, 0x01	; 1
+	writeWord(y0 + h - 1);
+ 37e:	8e 0d       	add	r24, r14
+ 380:	9f 1d       	adc	r25, r15
+ 382:	0e 94 95 01 	call	0x32a	; 0x32a <writeWord>
+	writeCmd(ILI9341_RAMWR); // write to RAM
+ 386:	8c e2       	ldi	r24, 0x2C	; 44
+ 388:	0e 94 86 03 	call	0x70c	; 0x70c <writeCmd>
+}
+ 38c:	df 91       	pop	r29
+ 38e:	cf 91       	pop	r28
+ 390:	1f 91       	pop	r17
+ 392:	0f 91       	pop	r16
+ 394:	ff 90       	pop	r15
+ 396:	ef 90       	pop	r14
+ 398:	df 90       	pop	r13
+ 39a:	cf 90       	pop	r12
+ 39c:	08 95       	ret
+
+0000039e <write565>:
+
+void write565(uint16_t data, uint32_t count)
+{
+ 39e:	cf 92       	push	r12
+ 3a0:	df 92       	push	r13
+ 3a2:	ef 92       	push	r14
+ 3a4:	ff 92       	push	r15
+ 3a6:	cf 93       	push	r28
+ 3a8:	df 93       	push	r29
+ 3aa:	ec 01       	movw	r28, r24
+ 3ac:	6a 01       	movw	r12, r20
+ 3ae:	7b 01       	movw	r14, r22
+	for(;count>0;count--) 
+ 3b0:	45 2b       	or	r20, r21
+ 3b2:	46 2b       	or	r20, r22
+ 3b4:	47 2b       	or	r20, r23
+ 3b6:	49 f0       	breq	.+18     	; 0x3ca <write565+0x2c>
+	{
+		writeWord(data);	 //send all pixeldata
+ 3b8:	ce 01       	movw	r24, r28
+ 3ba:	0e 94 95 01 	call	0x32a	; 0x32a <writeWord>
+	writeCmd(ILI9341_RAMWR); // write to RAM
+}
+
+void write565(uint16_t data, uint32_t count)
+{
+	for(;count>0;count--) 
+ 3be:	81 e0       	ldi	r24, 0x01	; 1
+ 3c0:	c8 1a       	sub	r12, r24
+ 3c2:	d1 08       	sbc	r13, r1
+ 3c4:	e1 08       	sbc	r14, r1
+ 3c6:	f1 08       	sbc	r15, r1
+ 3c8:	b9 f7       	brne	.-18     	; 0x3b8 <write565+0x1a>
+	{
+		writeWord(data);	 //send all pixeldata
+	}	
+}
+ 3ca:	df 91       	pop	r29
+ 3cc:	cf 91       	pop	r28
+ 3ce:	ff 90       	pop	r15
+ 3d0:	ef 90       	pop	r14
+ 3d2:	df 90       	pop	r13
+ 3d4:	cf 90       	pop	r12
+ 3d6:	08 95       	ret
+
+000003d8 <drawPixel>:
+
+void drawPixel (uint16_t x, uint16_t y, uint16_t color)
+{
+ 3d8:	ef 92       	push	r14
+ 3da:	ff 92       	push	r15
+ 3dc:	0f 93       	push	r16
+ 3de:	1f 93       	push	r17
+ 3e0:	cf 93       	push	r28
+ 3e2:	df 93       	push	r29
+	if((x >= 0) && (x < ILI9341_TFTWIDTH) && (y >= 0) && (y < ILI9341_TFTHEIGHT))
+ 3e4:	80 3f       	cpi	r24, 0xF0	; 240
+ 3e6:	91 05       	cpc	r25, r1
+ 3e8:	d0 f4       	brcc	.+52     	; 0x41e <__LOCK_REGION_LENGTH__+0x1e>
+ 3ea:	60 34       	cpi	r22, 0x40	; 64
+ 3ec:	21 e0       	ldi	r18, 0x01	; 1
+ 3ee:	72 07       	cpc	r23, r18
+ 3f0:	b0 f4       	brcc	.+44     	; 0x41e <__LOCK_REGION_LENGTH__+0x1e>
+ 3f2:	7a 01       	movw	r14, r20
+ 3f4:	8b 01       	movw	r16, r22
+ 3f6:	ec 01       	movw	r28, r24
+	{
+		spiStartWrite();
+ 3f8:	0e 94 5e 03 	call	0x6bc	; 0x6bc <spiStartWrite>
+		setAddrWindow(x, y, PXSIZE, PXSIZE); // set active region = 1 pixel
+ 3fc:	2e e1       	ldi	r18, 0x1E	; 30
+ 3fe:	30 e0       	ldi	r19, 0x00	; 0
+ 400:	4e e1       	ldi	r20, 0x1E	; 30
+ 402:	50 e0       	ldi	r21, 0x00	; 0
+ 404:	b8 01       	movw	r22, r16
+ 406:	ce 01       	movw	r24, r28
+ 408:	0e 94 9f 01 	call	0x33e	; 0x33e <setAddrWindow>
+		write565(color, PXSIZE * PXSIZE); // send color for this pixel
+ 40c:	44 e8       	ldi	r20, 0x84	; 132
+ 40e:	53 e0       	ldi	r21, 0x03	; 3
+ 410:	60 e0       	ldi	r22, 0x00	; 0
+ 412:	70 e0       	ldi	r23, 0x00	; 0
+ 414:	c7 01       	movw	r24, r14
+ 416:	0e 94 cf 01 	call	0x39e	; 0x39e <write565>
+		spiEndWrite();
+ 41a:	0e 94 69 03 	call	0x6d2	; 0x6d2 <spiEndWrite>
+	}
+}
+ 41e:	df 91       	pop	r29
+ 420:	cf 91       	pop	r28
+ 422:	1f 91       	pop	r17
+ 424:	0f 91       	pop	r16
+ 426:	ff 90       	pop	r15
+ 428:	ef 90       	pop	r14
+ 42a:	08 95       	ret
+
+0000042c <fillRect>:
+
+void fillRect (uint16_t x0, uint16_t y0, uint16_t w, uint16_t h, uint16_t color)
+{
+ 42c:	af 92       	push	r10
+ 42e:	bf 92       	push	r11
+ 430:	cf 92       	push	r12
+ 432:	df 92       	push	r13
+ 434:	ef 92       	push	r14
+ 436:	ff 92       	push	r15
+ 438:	0f 93       	push	r16
+ 43a:	1f 93       	push	r17
+ 43c:	cf 93       	push	r28
+ 43e:	df 93       	push	r29
+ 440:	6c 01       	movw	r12, r24
+ 442:	5b 01       	movw	r10, r22
+ 444:	7a 01       	movw	r14, r20
+ 446:	e9 01       	movw	r28, r18
+	spiStartWrite();
+ 448:	0e 94 5e 03 	call	0x6bc	; 0x6bc <spiStartWrite>
+	setAddrWindow(x0, y0, w, h); // set active region
+ 44c:	9e 01       	movw	r18, r28
+ 44e:	a7 01       	movw	r20, r14
+ 450:	b5 01       	movw	r22, r10
+ 452:	c6 01       	movw	r24, r12
+ 454:	0e 94 9f 01 	call	0x33e	; 0x33e <setAddrWindow>
+	write565(color, w * h); // set color data for all pixels
+ 458:	ec 9e       	mul	r14, r28
+ 45a:	b0 01       	movw	r22, r0
+ 45c:	ed 9e       	mul	r14, r29
+ 45e:	70 0d       	add	r23, r0
+ 460:	fc 9e       	mul	r15, r28
+ 462:	70 0d       	add	r23, r0
+ 464:	11 24       	eor	r1, r1
+ 466:	ab 01       	movw	r20, r22
+ 468:	60 e0       	ldi	r22, 0x00	; 0
+ 46a:	70 e0       	ldi	r23, 0x00	; 0
+ 46c:	c8 01       	movw	r24, r16
+ 46e:	0e 94 cf 01 	call	0x39e	; 0x39e <write565>
+	spiEndWrite();
+ 472:	0e 94 69 03 	call	0x6d2	; 0x6d2 <spiEndWrite>
+}
+ 476:	df 91       	pop	r29
+ 478:	cf 91       	pop	r28
+ 47a:	1f 91       	pop	r17
+ 47c:	0f 91       	pop	r16
+ 47e:	ff 90       	pop	r15
+ 480:	ef 90       	pop	r14
+ 482:	df 90       	pop	r13
+ 484:	cf 90       	pop	r12
+ 486:	bf 90       	pop	r11
+ 488:	af 90       	pop	r10
+ 48a:	08 95       	ret
+
+0000048c <writeBitmap>:
+
+
+void writeBitmap(uint8_t data[], uint32_t count, uint16_t col)
+{
+ 48c:	2f 92       	push	r2
+ 48e:	3f 92       	push	r3
+ 490:	4f 92       	push	r4
+ 492:	5f 92       	push	r5
+ 494:	6f 92       	push	r6
+ 496:	7f 92       	push	r7
+ 498:	8f 92       	push	r8
+ 49a:	9f 92       	push	r9
+ 49c:	af 92       	push	r10
+ 49e:	bf 92       	push	r11
+ 4a0:	cf 92       	push	r12
+ 4a2:	df 92       	push	r13
+ 4a4:	ef 92       	push	r14
+ 4a6:	ff 92       	push	r15
+ 4a8:	0f 93       	push	r16
+ 4aa:	1f 93       	push	r17
+ 4ac:	cf 93       	push	r28
+ 4ae:	df 93       	push	r29
+	uint8_t bitMask = 128;
+	uint32_t i = 0;
+	for(;i<count;i++)
+ 4b0:	41 15       	cp	r20, r1
+ 4b2:	51 05       	cpc	r21, r1
+ 4b4:	61 05       	cpc	r22, r1
+ 4b6:	71 05       	cpc	r23, r1
+ 4b8:	e1 f4       	brne	.+56     	; 0x4f2 <writeBitmap+0x66>
+ 4ba:	2e c0       	rjmp	.+92     	; 0x518 <writeBitmap+0x8c>
+	{
+		bitMask = 128;
+		while (bitMask) 
+		{
+			if ((data[i] & bitMask))
+ 4bc:	88 81       	ld	r24, Y
+ 4be:	83 21       	and	r24, r3
+ 4c0:	21 f0       	breq	.+8      	; 0x4ca <writeBitmap+0x3e>
+			{
+				writeWord(col);	 //send col1
+ 4c2:	c8 01       	movw	r24, r16
+ 4c4:	0e 94 95 01 	call	0x32a	; 0x32a <writeWord>
+ 4c8:	04 c0       	rjmp	.+8      	; 0x4d2 <writeBitmap+0x46>
+			}
+			else
+			{
+				writeWord(BLACK);	 //send col2
+ 4ca:	80 e0       	ldi	r24, 0x00	; 0
+ 4cc:	90 e0       	ldi	r25, 0x00	; 0
+ 4ce:	0e 94 95 01 	call	0x32a	; 0x32a <writeWord>
+			}
+			bitMask = (bitMask >> 1);
+ 4d2:	36 94       	lsr	r3
+ 4d4:	81 e0       	ldi	r24, 0x01	; 1
+ 4d6:	48 1a       	sub	r4, r24
+ 4d8:	51 08       	sbc	r5, r1
+	uint8_t bitMask = 128;
+	uint32_t i = 0;
+	for(;i<count;i++)
+	{
+		bitMask = 128;
+		while (bitMask) 
+ 4da:	81 f7       	brne	.-32     	; 0x4bc <writeBitmap+0x30>
+
+void writeBitmap(uint8_t data[], uint32_t count, uint16_t col)
+{
+	uint8_t bitMask = 128;
+	uint32_t i = 0;
+	for(;i<count;i++)
+ 4dc:	8f ef       	ldi	r24, 0xFF	; 255
+ 4de:	c8 1a       	sub	r12, r24
+ 4e0:	d8 0a       	sbc	r13, r24
+ 4e2:	e8 0a       	sbc	r14, r24
+ 4e4:	f8 0a       	sbc	r15, r24
+ 4e6:	c8 14       	cp	r12, r8
+ 4e8:	d9 04       	cpc	r13, r9
+ 4ea:	ea 04       	cpc	r14, r10
+ 4ec:	fb 04       	cpc	r15, r11
+ 4ee:	49 f4       	brne	.+18     	; 0x502 <writeBitmap+0x76>
+ 4f0:	13 c0       	rjmp	.+38     	; 0x518 <writeBitmap+0x8c>
+ 4f2:	89 01       	movw	r16, r18
+ 4f4:	4a 01       	movw	r8, r20
+ 4f6:	5b 01       	movw	r10, r22
+ 4f8:	3c 01       	movw	r6, r24
+ 4fa:	c1 2c       	mov	r12, r1
+ 4fc:	d1 2c       	mov	r13, r1
+ 4fe:	76 01       	movw	r14, r12
+	spiEndWrite();
+}
+
+
+void writeBitmap(uint8_t data[], uint32_t count, uint16_t col)
+{
+ 500:	21 2c       	mov	r2, r1
+ 502:	68 94       	set
+ 504:	44 24       	eor	r4, r4
+ 506:	43 f8       	bld	r4, 3
+ 508:	52 2c       	mov	r5, r2
+ 50a:	68 94       	set
+ 50c:	33 24       	eor	r3, r3
+ 50e:	37 f8       	bld	r3, 7
+ 510:	e3 01       	movw	r28, r6
+ 512:	cc 0d       	add	r28, r12
+ 514:	dd 1d       	adc	r29, r13
+ 516:	d2 cf       	rjmp	.-92     	; 0x4bc <writeBitmap+0x30>
+				writeWord(BLACK);	 //send col2
+			}
+			bitMask = (bitMask >> 1);
+		}
+	}
+}
+ 518:	df 91       	pop	r29
+ 51a:	cf 91       	pop	r28
+ 51c:	1f 91       	pop	r17
+ 51e:	0f 91       	pop	r16
+ 520:	ff 90       	pop	r15
+ 522:	ef 90       	pop	r14
+ 524:	df 90       	pop	r13
+ 526:	cf 90       	pop	r12
+ 528:	bf 90       	pop	r11
+ 52a:	af 90       	pop	r10
+ 52c:	9f 90       	pop	r9
+ 52e:	8f 90       	pop	r8
+ 530:	7f 90       	pop	r7
+ 532:	6f 90       	pop	r6
+ 534:	5f 90       	pop	r5
+ 536:	4f 90       	pop	r4
+ 538:	3f 90       	pop	r3
+ 53a:	2f 90       	pop	r2
+ 53c:	08 95       	ret
+
+0000053e <drawBitmapPlayer>:
+
+void drawBitmapPlayer(uint16_t x, uint16_t y)
+{
+ 53e:	0f 93       	push	r16
+ 540:	1f 93       	push	r17
+ 542:	cf 93       	push	r28
+ 544:	df 93       	push	r29
+	if((x >= 0) && (x < ILI9341_TFTWIDTH) && (y >= 0) && (y < ILI9341_TFTHEIGHT))
+ 546:	80 3f       	cpi	r24, 0xF0	; 240
+ 548:	91 05       	cpc	r25, r1
+ 54a:	e0 f4       	brcc	.+56     	; 0x584 <drawBitmapPlayer+0x46>
+ 54c:	60 34       	cpi	r22, 0x40	; 64
+ 54e:	21 e0       	ldi	r18, 0x01	; 1
+ 550:	72 07       	cpc	r23, r18
+ 552:	c0 f4       	brcc	.+48     	; 0x584 <drawBitmapPlayer+0x46>
+ 554:	8b 01       	movw	r16, r22
+ 556:	ec 01       	movw	r28, r24
+	{
+		spiStartWrite();
+ 558:	0e 94 5e 03 	call	0x6bc	; 0x6bc <spiStartWrite>
+		setAddrWindow(x, y, PLAYERSIZE, PLAYERSIZE); // set active region = 30 x 30
+ 55c:	2e e1       	ldi	r18, 0x1E	; 30
+ 55e:	30 e0       	ldi	r19, 0x00	; 0
+ 560:	4e e1       	ldi	r20, 0x1E	; 30
+ 562:	50 e0       	ldi	r21, 0x00	; 0
+ 564:	b8 01       	movw	r22, r16
+ 566:	ce 01       	movw	r24, r28
+ 568:	0e 94 9f 01 	call	0x33e	; 0x33e <setAddrWindow>
+		writeBitmap(playerBitmap, PLAYERLEN, GREEN); // send color for this pixel
+ 56c:	20 ee       	ldi	r18, 0xE0	; 224
+ 56e:	37 e0       	ldi	r19, 0x07	; 7
+ 570:	41 e7       	ldi	r20, 0x71	; 113
+ 572:	50 e0       	ldi	r21, 0x00	; 0
+ 574:	60 e0       	ldi	r22, 0x00	; 0
+ 576:	70 e0       	ldi	r23, 0x00	; 0
+ 578:	86 e6       	ldi	r24, 0x66	; 102
+ 57a:	92 e0       	ldi	r25, 0x02	; 2
+ 57c:	0e 94 46 02 	call	0x48c	; 0x48c <writeBitmap>
+		spiEndWrite();
+ 580:	0e 94 69 03 	call	0x6d2	; 0x6d2 <spiEndWrite>
+	}
+}
+ 584:	df 91       	pop	r29
+ 586:	cf 91       	pop	r28
+ 588:	1f 91       	pop	r17
+ 58a:	0f 91       	pop	r16
+ 58c:	08 95       	ret
+
+0000058e <drawBitmapChar>:
+
+void drawBitmapChar(uint16_t x, uint16_t y, uint8_t charArrayIndex)
+{
+ 58e:	ff 92       	push	r15
+ 590:	0f 93       	push	r16
+ 592:	1f 93       	push	r17
+ 594:	cf 93       	push	r28
+ 596:	df 93       	push	r29
+	if((x >= 0) && (x < ILI9341_TFTWIDTH) && (y >= 0) && (y < ILI9341_TFTHEIGHT))
+ 598:	80 3f       	cpi	r24, 0xF0	; 240
+ 59a:	91 05       	cpc	r25, r1
+ 59c:	08 f5       	brcc	.+66     	; 0x5e0 <drawBitmapChar+0x52>
+ 59e:	60 34       	cpi	r22, 0x40	; 64
+ 5a0:	21 e0       	ldi	r18, 0x01	; 1
+ 5a2:	72 07       	cpc	r23, r18
+ 5a4:	e8 f4       	brcc	.+58     	; 0x5e0 <drawBitmapChar+0x52>
+ 5a6:	f4 2e       	mov	r15, r20
+ 5a8:	8b 01       	movw	r16, r22
+ 5aa:	ec 01       	movw	r28, r24
+	{
+		spiStartWrite();
+ 5ac:	0e 94 5e 03 	call	0x6bc	; 0x6bc <spiStartWrite>
+		setAddrWindow(x, y, 10, 10); // set active region = 1 pixel
+ 5b0:	2a e0       	ldi	r18, 0x0A	; 10
+ 5b2:	30 e0       	ldi	r19, 0x00	; 0
+ 5b4:	4a e0       	ldi	r20, 0x0A	; 10
+ 5b6:	50 e0       	ldi	r21, 0x00	; 0
+ 5b8:	b8 01       	movw	r22, r16
+ 5ba:	ce 01       	movw	r24, r28
+ 5bc:	0e 94 9f 01 	call	0x33e	; 0x33e <setAddrWindow>
+		writeBitmap(charBitmap[charArrayIndex], 10, WHITE); // send color for this pixel
+ 5c0:	2d e0       	ldi	r18, 0x0D	; 13
+ 5c2:	f2 9e       	mul	r15, r18
+ 5c4:	c0 01       	movw	r24, r0
+ 5c6:	11 24       	eor	r1, r1
+ 5c8:	2f ef       	ldi	r18, 0xFF	; 255
+ 5ca:	3f ef       	ldi	r19, 0xFF	; 255
+ 5cc:	4a e0       	ldi	r20, 0x0A	; 10
+ 5ce:	50 e0       	ldi	r21, 0x00	; 0
+ 5d0:	60 e0       	ldi	r22, 0x00	; 0
+ 5d2:	70 e0       	ldi	r23, 0x00	; 0
+ 5d4:	89 5f       	subi	r24, 0xF9	; 249
+ 5d6:	9e 4f       	sbci	r25, 0xFE	; 254
+ 5d8:	0e 94 46 02 	call	0x48c	; 0x48c <writeBitmap>
+		spiEndWrite();
+ 5dc:	0e 94 69 03 	call	0x6d2	; 0x6d2 <spiEndWrite>
+	}
+}
+ 5e0:	df 91       	pop	r29
+ 5e2:	cf 91       	pop	r28
+ 5e4:	1f 91       	pop	r17
+ 5e6:	0f 91       	pop	r16
+ 5e8:	ff 90       	pop	r15
+ 5ea:	08 95       	ret
+
+000005ec <drawStar>:
+
+void drawStar(uint16_t x, uint16_t y)
+{
+ 5ec:	0f 93       	push	r16
+ 5ee:	1f 93       	push	r17
+ 5f0:	cf 93       	push	r28
+ 5f2:	df 93       	push	r29
+	if((x >= 0) && (x < ILI9341_TFTWIDTH) && (y >= 0) && (y < ILI9341_TFTHEIGHT))
+ 5f4:	80 3f       	cpi	r24, 0xF0	; 240
+ 5f6:	91 05       	cpc	r25, r1
+ 5f8:	e0 f4       	brcc	.+56     	; 0x632 <drawStar+0x46>
+ 5fa:	60 34       	cpi	r22, 0x40	; 64
+ 5fc:	21 e0       	ldi	r18, 0x01	; 1
+ 5fe:	72 07       	cpc	r23, r18
+ 600:	c0 f4       	brcc	.+48     	; 0x632 <drawStar+0x46>
+ 602:	8b 01       	movw	r16, r22
+ 604:	ec 01       	movw	r28, r24
+	{
+		spiStartWrite();
+ 606:	0e 94 5e 03 	call	0x6bc	; 0x6bc <spiStartWrite>
+		setAddrWindow(x, y, 7, 7); // set active region = 1 pixel
+ 60a:	27 e0       	ldi	r18, 0x07	; 7
+ 60c:	30 e0       	ldi	r19, 0x00	; 0
+ 60e:	47 e0       	ldi	r20, 0x07	; 7
+ 610:	50 e0       	ldi	r21, 0x00	; 0
+ 612:	b8 01       	movw	r22, r16
+ 614:	ce 01       	movw	r24, r28
+ 616:	0e 94 9f 01 	call	0x33e	; 0x33e <setAddrWindow>
+		writeBitmap(Stern, 7, WHITE); // send color for this pixel
+ 61a:	2f ef       	ldi	r18, 0xFF	; 255
+ 61c:	3f ef       	ldi	r19, 0xFF	; 255
+ 61e:	47 e0       	ldi	r20, 0x07	; 7
+ 620:	50 e0       	ldi	r21, 0x00	; 0
+ 622:	60 e0       	ldi	r22, 0x00	; 0
+ 624:	70 e0       	ldi	r23, 0x00	; 0
+ 626:	80 e0       	ldi	r24, 0x00	; 0
+ 628:	91 e0       	ldi	r25, 0x01	; 1
+ 62a:	0e 94 46 02 	call	0x48c	; 0x48c <writeBitmap>
+		spiEndWrite();
+ 62e:	0e 94 69 03 	call	0x6d2	; 0x6d2 <spiEndWrite>
+	}
+ 632:	df 91       	pop	r29
+ 634:	cf 91       	pop	r28
+ 636:	1f 91       	pop	r17
+ 638:	0f 91       	pop	r16
+ 63a:	08 95       	ret
+
+0000063c <uart_putchar>:
+
+#include <avr/io.h>
+#include <stdio.h>
+
+
+void uart_putchar(char c, FILE *stream) {
+ 63c:	cf 93       	push	r28
+ 63e:	c8 2f       	mov	r28, r24
+	if (c == '\n') {
+ 640:	8a 30       	cpi	r24, 0x0A	; 10
+ 642:	19 f4       	brne	.+6      	; 0x64a <uart_putchar+0xe>
+		uart_putchar('\r', stream);
+ 644:	8d e0       	ldi	r24, 0x0D	; 13
+ 646:	0e 94 1e 03 	call	0x63c	; 0x63c <uart_putchar>
+	}
+	loop_until_bit_is_set(UCSR0A, UDRE0);
+ 64a:	e0 ec       	ldi	r30, 0xC0	; 192
+ 64c:	f0 e0       	ldi	r31, 0x00	; 0
+ 64e:	90 81       	ld	r25, Z
+ 650:	95 ff       	sbrs	r25, 5
+ 652:	fd cf       	rjmp	.-6      	; 0x64e <uart_putchar+0x12>
+	UDR0 = c;
+ 654:	c0 93 c6 00 	sts	0x00C6, r28	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+}
+ 658:	cf 91       	pop	r28
+ 65a:	08 95       	ret
+
+0000065c <uart_getchar>:
+
+char uart_getchar(FILE *stream) {
+	loop_until_bit_is_set(UCSR0A, RXC0); /* Wait until data exists. */
+ 65c:	e0 ec       	ldi	r30, 0xC0	; 192
+ 65e:	f0 e0       	ldi	r31, 0x00	; 0
+ 660:	80 81       	ld	r24, Z
+ 662:	88 23       	and	r24, r24
+ 664:	ec f7       	brge	.-6      	; 0x660 <uart_getchar+0x4>
+	return UDR0;
+ 666:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+}
+ 66a:	08 95       	ret
+
+0000066c <uart_init>:
+FILE uart_output = FDEV_SETUP_STREAM(uart_putchar, NULL, _FDEV_SETUP_WRITE);
+FILE uart_input = FDEV_SETUP_STREAM(NULL, uart_getchar, _FDEV_SETUP_READ);
+FILE uart_io = FDEV_SETUP_STREAM(uart_putchar, uart_getchar, _FDEV_SETUP_RW);
+
+void uart_init(void) {
+	UBRR0H = UBRRH_VALUE;
+ 66c:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+	UBRR0L = UBRRL_VALUE;
+ 670:	87 e6       	ldi	r24, 0x67	; 103
+ 672:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+
+	#if USE_2X
+	UCSR0A |= _BV(U2X0);
+	#else
+	UCSR0A &= ~(_BV(U2X0));
+ 676:	e0 ec       	ldi	r30, 0xC0	; 192
+ 678:	f0 e0       	ldi	r31, 0x00	; 0
+ 67a:	80 81       	ld	r24, Z
+ 67c:	8d 7f       	andi	r24, 0xFD	; 253
+ 67e:	80 83       	st	Z, r24
+	#endif
+
+	UCSR0C = _BV(UCSZ01) | _BV(UCSZ00); /* 8-bit data */
+ 680:	86 e0       	ldi	r24, 0x06	; 6
+ 682:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+	UCSR0B = _BV(RXEN0) | _BV(TXEN0);   /* Enable RX and TX */
+ 686:	88 e1       	ldi	r24, 0x18	; 24
+ 688:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+
+	stdout = &uart_output;
+ 68c:	e2 e2       	ldi	r30, 0x22	; 34
+ 68e:	f3 e0       	ldi	r31, 0x03	; 3
+ 690:	85 ee       	ldi	r24, 0xE5	; 229
+ 692:	92 e0       	ldi	r25, 0x02	; 2
+ 694:	93 83       	std	Z+3, r25	; 0x03
+ 696:	82 83       	std	Z+2, r24	; 0x02
+	stdin  = &uart_input;
+ 698:	87 ed       	ldi	r24, 0xD7	; 215
+ 69a:	92 e0       	ldi	r25, 0x02	; 2
+ 69c:	91 83       	std	Z+1, r25	; 0x01
+ 69e:	80 83       	st	Z, r24
+ 6a0:	08 95       	ret
+
+000006a2 <Serial_begin>:
+
+}
+
+void Serial_begin(void)
+{
+	uart_init();
+ 6a2:	0e 94 36 03 	call	0x66c	; 0x66c <uart_init>
+ 6a6:	08 95       	ret
+
+000006a8 <spiInitMaster>:
+int spiReceive(void)
+{
+	while(!(SPSR & (1<<SPIF)));    // wait until complete
+	dataIn = SPDR;					//Save input
+	return dataIn;					
+}
+ 6a8:	84 b1       	in	r24, 0x04	; 4
+ 6aa:	8c 62       	ori	r24, 0x2C	; 44
+ 6ac:	84 b9       	out	0x04, r24	; 4
+ 6ae:	24 98       	cbi	0x04, 4	; 4
+ 6b0:	2a 9a       	sbi	0x05, 2	; 5
+ 6b2:	81 e0       	ldi	r24, 0x01	; 1
+ 6b4:	8d bd       	out	0x2d, r24	; 45
+ 6b6:	80 e5       	ldi	r24, 0x50	; 80
+ 6b8:	8c bd       	out	0x2c, r24	; 44
+ 6ba:	08 95       	ret
+
+000006bc <spiStartWrite>:
+ 6bc:	80 e5       	ldi	r24, 0x50	; 80
+ 6be:	8c bd       	out	0x2c, r24	; 44
+ 6c0:	81 e0       	ldi	r24, 0x01	; 1
+ 6c2:	8d bd       	out	0x2d, r24	; 45
+ 6c4:	29 9a       	sbi	0x05, 1	; 5
+ 6c6:	85 e0       	ldi	r24, 0x05	; 5
+ 6c8:	8a 95       	dec	r24
+ 6ca:	f1 f7       	brne	.-4      	; 0x6c8 <spiStartWrite+0xc>
+ 6cc:	00 00       	nop
+ 6ce:	2a 98       	cbi	0x05, 2	; 5
+ 6d0:	08 95       	ret
+
+000006d2 <spiEndWrite>:
+ 6d2:	2a 9a       	sbi	0x05, 2	; 5
+ 6d4:	29 98       	cbi	0x05, 1	; 5
+ 6d6:	08 95       	ret
+
+000006d8 <spiStartWriteTouch>:
+ 6d8:	81 e5       	ldi	r24, 0x51	; 81
+ 6da:	8c bd       	out	0x2c, r24	; 44
+ 6dc:	1d bc       	out	0x2d, r1	; 45
+ 6de:	28 98       	cbi	0x05, 0	; 5
+ 6e0:	08 95       	ret
+
+000006e2 <spiEndWriteTouch>:
+ 6e2:	28 9a       	sbi	0x05, 0	; 5
+ 6e4:	08 95       	ret
+
+000006e6 <spiTransmit>:
+
+int spiTransmit(uint8_t dataOut)
+{
+	SPDR = dataOut;                 // send data
+ 6e6:	8e bd       	out	0x2e, r24	; 46
+	asm volatile("nop");
+ 6e8:	00 00       	nop
+	while(!(SPSR & (1<<SPIF)));
+ 6ea:	0d b4       	in	r0, 0x2d	; 45
+ 6ec:	07 fe       	sbrs	r0, 7
+ 6ee:	fd cf       	rjmp	.-6      	; 0x6ea <spiTransmit+0x4>
+	return SPDR;
+ 6f0:	8e b5       	in	r24, 0x2e	; 46
+ 6f2:	90 e0       	ldi	r25, 0x00	; 0
+ 6f4:	08 95       	ret
+
+000006f6 <writeByte>:
+	SPCR = (1<<SPE) | (1<<MSTR);
+}
+
+void writeByte (uint8_t b)
+{
+	controlport |=(1<<dc);		//set dc high for data
+ 6f6:	29 9a       	sbi	0x05, 1	; 5
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 6f8:	95 e0       	ldi	r25, 0x05	; 5
+ 6fa:	9a 95       	dec	r25
+ 6fc:	f1 f7       	brne	.-4      	; 0x6fa <writeByte+0x4>
+ 6fe:	00 00       	nop
+	_delay_us(1);				//delay
+	controlport &=~(1<<cs_disp);		//set cs low for operation
+ 700:	2a 98       	cbi	0x05, 2	; 5
+	spiTransmit(b);
+ 702:	0e 94 73 03 	call	0x6e6	; 0x6e6 <spiTransmit>
+	controlport |= (1<<cs_disp);
+ 706:	2a 9a       	sbi	0x05, 2	; 5
+	controlport &=~ (1<<dc);	//set dc low
+ 708:	29 98       	cbi	0x05, 1	; 5
+ 70a:	08 95       	ret
+
+0000070c <writeCmd>:
+}
+
+void writeCmd (uint8_t cmd)
+{
+	controlport &=~((1<<dc)|(1<<cs_disp));	//dc and cs both low to send command
+ 70c:	95 b1       	in	r25, 0x05	; 5
+ 70e:	99 7f       	andi	r25, 0xF9	; 249
+ 710:	95 b9       	out	0x05, r25	; 5
+ 712:	9a e1       	ldi	r25, 0x1A	; 26
+ 714:	9a 95       	dec	r25
+ 716:	f1 f7       	brne	.-4      	; 0x714 <writeCmd+0x8>
+ 718:	00 c0       	rjmp	.+0      	; 0x71a <writeCmd+0xe>
+	_delay_us(5);						//little delay
+	spiTransmit(cmd);
+ 71a:	0e 94 73 03 	call	0x6e6	; 0x6e6 <spiTransmit>
+	controlport |=(1<<cs_disp);				//pull high cs
+ 71e:	2a 9a       	sbi	0x05, 2	; 5
+ 720:	08 95       	ret
+
+00000722 <readReg8>:
+{
+}
+
+uint8_t bufferSize(void) {
+	return readReg8(STMPE_FIFO_SIZE);
+}
+ 722:	cf 93       	push	r28
+ 724:	c8 2f       	mov	r28, r24
+ 726:	0e 94 6c 03 	call	0x6d8	; 0x6d8 <spiStartWriteTouch>
+ 72a:	8c 2f       	mov	r24, r28
+ 72c:	80 68       	ori	r24, 0x80	; 128
+ 72e:	0e 94 73 03 	call	0x6e6	; 0x6e6 <spiTransmit>
+ 732:	80 e0       	ldi	r24, 0x00	; 0
+ 734:	0e 94 73 03 	call	0x6e6	; 0x6e6 <spiTransmit>
+ 738:	80 e0       	ldi	r24, 0x00	; 0
+ 73a:	0e 94 73 03 	call	0x6e6	; 0x6e6 <spiTransmit>
+ 73e:	c8 2f       	mov	r28, r24
+ 740:	0e 94 71 03 	call	0x6e2	; 0x6e2 <spiEndWriteTouch>
+ 744:	8c 2f       	mov	r24, r28
+ 746:	cf 91       	pop	r28
+ 748:	08 95       	ret
+
+0000074a <writeReg8>:
+ 74a:	cf 93       	push	r28
+ 74c:	df 93       	push	r29
+ 74e:	d8 2f       	mov	r29, r24
+ 750:	c6 2f       	mov	r28, r22
+ 752:	0e 94 6c 03 	call	0x6d8	; 0x6d8 <spiStartWriteTouch>
+ 756:	8d 2f       	mov	r24, r29
+ 758:	0e 94 73 03 	call	0x6e6	; 0x6e6 <spiTransmit>
+ 75c:	8c 2f       	mov	r24, r28
+ 75e:	0e 94 73 03 	call	0x6e6	; 0x6e6 <spiTransmit>
+ 762:	0e 94 71 03 	call	0x6e2	; 0x6e2 <spiEndWriteTouch>
+ 766:	df 91       	pop	r29
+ 768:	cf 91       	pop	r28
+ 76a:	08 95       	ret
+
+0000076c <touch_begin>:
+ 76c:	cf 93       	push	r28
+ 76e:	20 9a       	sbi	0x04, 0	; 4
+ 770:	85 b1       	in	r24, 0x05	; 5
+ 772:	85 b9       	out	0x05, r24	; 5
+ 774:	62 e0       	ldi	r22, 0x02	; 2
+ 776:	83 e0       	ldi	r24, 0x03	; 3
+ 778:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 77c:	8f e3       	ldi	r24, 0x3F	; 63
+ 77e:	9c e9       	ldi	r25, 0x9C	; 156
+ 780:	01 97       	sbiw	r24, 0x01	; 1
+ 782:	f1 f7       	brne	.-4      	; 0x780 <touch_begin+0x14>
+ 784:	00 c0       	rjmp	.+0      	; 0x786 <touch_begin+0x1a>
+ 786:	00 00       	nop
+ 788:	c0 e0       	ldi	r28, 0x00	; 0
+ 78a:	8c 2f       	mov	r24, r28
+ 78c:	0e 94 91 03 	call	0x722	; 0x722 <readReg8>
+ 790:	cf 5f       	subi	r28, 0xFF	; 255
+ 792:	c1 34       	cpi	r28, 0x41	; 65
+ 794:	d1 f7       	brne	.-12     	; 0x78a <touch_begin+0x1e>
+ 796:	60 e0       	ldi	r22, 0x00	; 0
+ 798:	84 e0       	ldi	r24, 0x04	; 4
+ 79a:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 79e:	61 e0       	ldi	r22, 0x01	; 1
+ 7a0:	80 e4       	ldi	r24, 0x40	; 64
+ 7a2:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7a6:	61 e0       	ldi	r22, 0x01	; 1
+ 7a8:	8a e0       	ldi	r24, 0x0A	; 10
+ 7aa:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7ae:	60 e6       	ldi	r22, 0x60	; 96
+ 7b0:	80 e2       	ldi	r24, 0x20	; 32
+ 7b2:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7b6:	62 e0       	ldi	r22, 0x02	; 2
+ 7b8:	81 e2       	ldi	r24, 0x21	; 33
+ 7ba:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7be:	64 ea       	ldi	r22, 0xA4	; 164
+ 7c0:	81 e4       	ldi	r24, 0x41	; 65
+ 7c2:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7c6:	66 e0       	ldi	r22, 0x06	; 6
+ 7c8:	86 e5       	ldi	r24, 0x56	; 86
+ 7ca:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7ce:	61 e0       	ldi	r22, 0x01	; 1
+ 7d0:	8a e4       	ldi	r24, 0x4A	; 74
+ 7d2:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7d6:	61 e0       	ldi	r22, 0x01	; 1
+ 7d8:	8b e4       	ldi	r24, 0x4B	; 75
+ 7da:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7de:	60 e0       	ldi	r22, 0x00	; 0
+ 7e0:	8b e4       	ldi	r24, 0x4B	; 75
+ 7e2:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7e6:	61 e0       	ldi	r22, 0x01	; 1
+ 7e8:	88 e5       	ldi	r24, 0x58	; 88
+ 7ea:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7ee:	6f ef       	ldi	r22, 0xFF	; 255
+ 7f0:	8b e0       	ldi	r24, 0x0B	; 11
+ 7f2:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7f6:	65 e0       	ldi	r22, 0x05	; 5
+ 7f8:	89 e0       	ldi	r24, 0x09	; 9
+ 7fa:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 7fe:	87 ef       	ldi	r24, 0xF7	; 247
+ 800:	92 e0       	ldi	r25, 0x02	; 2
+ 802:	0e 94 48 06 	call	0xc90	; 0xc90 <puts>
+ 806:	81 e0       	ldi	r24, 0x01	; 1
+ 808:	cf 91       	pop	r28
+ 80a:	08 95       	ret
+
+0000080c <touched>:
+ 80c:	80 e4       	ldi	r24, 0x40	; 64
+ 80e:	0e 94 91 03 	call	0x722	; 0x722 <readReg8>
+ 812:	80 78       	andi	r24, 0x80	; 128
+ 814:	08 95       	ret
+
+00000816 <bufferEmpty>:
+
+uint8_t bufferEmpty() 
+{
+	return (readReg8(STMPE_FIFO_STA) & STMPE_FIFO_STA_EMPTY);
+ 816:	8b e4       	ldi	r24, 0x4B	; 75
+ 818:	0e 94 91 03 	call	0x722	; 0x722 <readReg8>
+}
+ 81c:	80 72       	andi	r24, 0x20	; 32
+ 81e:	08 95       	ret
+
+00000820 <readData>:
+
+void readData(uint16_t *x, uint16_t *y, uint8_t *z) 
+{
+ 820:	8f 92       	push	r8
+ 822:	9f 92       	push	r9
+ 824:	af 92       	push	r10
+ 826:	bf 92       	push	r11
+ 828:	cf 92       	push	r12
+ 82a:	df 92       	push	r13
+ 82c:	ef 92       	push	r14
+ 82e:	ff 92       	push	r15
+ 830:	0f 93       	push	r16
+ 832:	1f 93       	push	r17
+ 834:	cf 93       	push	r28
+ 836:	df 93       	push	r29
+ 838:	00 d0       	rcall	.+0      	; 0x83a <readData+0x1a>
+ 83a:	00 d0       	rcall	.+0      	; 0x83c <readData+0x1c>
+ 83c:	cd b7       	in	r28, 0x3d	; 61
+ 83e:	de b7       	in	r29, 0x3e	; 62
+ 840:	5c 01       	movw	r10, r24
+ 842:	6b 01       	movw	r12, r22
+ 844:	7a 01       	movw	r14, r20
+ 846:	8e 01       	movw	r16, r28
+ 848:	0f 5f       	subi	r16, 0xFF	; 255
+ 84a:	1f 4f       	sbci	r17, 0xFF	; 255
+ 84c:	4e 01       	movw	r8, r28
+ 84e:	45 e0       	ldi	r20, 0x05	; 5
+ 850:	84 0e       	add	r8, r20
+ 852:	91 1c       	adc	r9, r1
+	uint8_t data[4];
+
+	for (uint8_t i = 0; i < 4; i++) {
+		data[i] = readReg8(0xD7); // _spi->transfer(0x00);
+ 854:	87 ed       	ldi	r24, 0xD7	; 215
+ 856:	0e 94 91 03 	call	0x722	; 0x722 <readReg8>
+ 85a:	f8 01       	movw	r30, r16
+ 85c:	81 93       	st	Z+, r24
+ 85e:	8f 01       	movw	r16, r30
+
+void readData(uint16_t *x, uint16_t *y, uint8_t *z) 
+{
+	uint8_t data[4];
+
+	for (uint8_t i = 0; i < 4; i++) {
+ 860:	e8 15       	cp	r30, r8
+ 862:	f9 05       	cpc	r31, r9
+ 864:	b9 f7       	brne	.-18     	; 0x854 <readData+0x34>
+		data[i] = readReg8(0xD7); // _spi->transfer(0x00);
+	}
+	*x = data[0];
+	*x <<= 4;
+	*x |= (data[1] >> 4);
+ 866:	9a 81       	ldd	r25, Y+2	; 0x02
+ 868:	89 2f       	mov	r24, r25
+ 86a:	82 95       	swap	r24
+ 86c:	8f 70       	andi	r24, 0x0F	; 15
+	uint8_t data[4];
+
+	for (uint8_t i = 0; i < 4; i++) {
+		data[i] = readReg8(0xD7); // _spi->transfer(0x00);
+	}
+	*x = data[0];
+ 86e:	29 81       	ldd	r18, Y+1	; 0x01
+	*x <<= 4;
+ 870:	f0 e1       	ldi	r31, 0x10	; 16
+ 872:	2f 9f       	mul	r18, r31
+ 874:	90 01       	movw	r18, r0
+ 876:	11 24       	eor	r1, r1
+	*x |= (data[1] >> 4);
+ 878:	28 2b       	or	r18, r24
+ 87a:	f5 01       	movw	r30, r10
+ 87c:	31 83       	std	Z+1, r19	; 0x01
+ 87e:	20 83       	st	Z, r18
+	*y = data[1] & 0x0F;
+ 880:	9f 70       	andi	r25, 0x0F	; 15
+ 882:	89 2f       	mov	r24, r25
+ 884:	90 e0       	ldi	r25, 0x00	; 0
+	*y <<= 8;
+ 886:	98 2f       	mov	r25, r24
+ 888:	88 27       	eor	r24, r24
+	*y |= data[2];
+ 88a:	2b 81       	ldd	r18, Y+3	; 0x03
+ 88c:	82 2b       	or	r24, r18
+ 88e:	f6 01       	movw	r30, r12
+ 890:	91 83       	std	Z+1, r25	; 0x01
+ 892:	80 83       	st	Z, r24
+	*z = data[3];
+ 894:	8c 81       	ldd	r24, Y+4	; 0x04
+ 896:	f7 01       	movw	r30, r14
+ 898:	80 83       	st	Z, r24
+
+	writeReg8(STMPE_INT_STA, 0xFF); // reset all ints
+ 89a:	6f ef       	ldi	r22, 0xFF	; 255
+ 89c:	8b e0       	ldi	r24, 0x0B	; 11
+ 89e:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+ 8a2:	0f 90       	pop	r0
+ 8a4:	0f 90       	pop	r0
+ 8a6:	0f 90       	pop	r0
+ 8a8:	0f 90       	pop	r0
+ 8aa:	df 91       	pop	r29
+ 8ac:	cf 91       	pop	r28
+ 8ae:	1f 91       	pop	r17
+ 8b0:	0f 91       	pop	r16
+ 8b2:	ff 90       	pop	r15
+ 8b4:	ef 90       	pop	r14
+ 8b6:	df 90       	pop	r13
+ 8b8:	cf 90       	pop	r12
+ 8ba:	bf 90       	pop	r11
+ 8bc:	af 90       	pop	r10
+ 8be:	9f 90       	pop	r9
+ 8c0:	8f 90       	pop	r8
+ 8c2:	08 95       	ret
+
+000008c4 <getPoint>:
+	return (readReg8(STMPE_TSC_CTRL) & 0x80);
+}
+
+//TODO: implement z-value 
+void getPoint(uint16_t *p_X, uint16_t *p_Y) 
+{
+ 8c4:	ef 92       	push	r14
+ 8c6:	ff 92       	push	r15
+ 8c8:	0f 93       	push	r16
+ 8ca:	1f 93       	push	r17
+ 8cc:	cf 93       	push	r28
+ 8ce:	df 93       	push	r29
+ 8d0:	00 d0       	rcall	.+0      	; 0x8d2 <getPoint+0xe>
+ 8d2:	00 d0       	rcall	.+0      	; 0x8d4 <getPoint+0x10>
+ 8d4:	1f 92       	push	r1
+ 8d6:	cd b7       	in	r28, 0x3d	; 61
+ 8d8:	de b7       	in	r29, 0x3e	; 62
+ 8da:	7c 01       	movw	r14, r24
+ 8dc:	8b 01       	movw	r16, r22
+	uint16_t x, y;
+	uint8_t z;
+	while (!bufferEmpty()) {
+ 8de:	0a c0       	rjmp	.+20     	; 0x8f4 <getPoint+0x30>
+		readData(&x, &y, &z);
+ 8e0:	ae 01       	movw	r20, r28
+ 8e2:	4b 5f       	subi	r20, 0xFB	; 251
+ 8e4:	5f 4f       	sbci	r21, 0xFF	; 255
+ 8e6:	be 01       	movw	r22, r28
+ 8e8:	6d 5f       	subi	r22, 0xFD	; 253
+ 8ea:	7f 4f       	sbci	r23, 0xFF	; 255
+ 8ec:	ce 01       	movw	r24, r28
+ 8ee:	01 96       	adiw	r24, 0x01	; 1
+ 8f0:	0e 94 10 04 	call	0x820	; 0x820 <readData>
+//TODO: implement z-value 
+void getPoint(uint16_t *p_X, uint16_t *p_Y) 
+{
+	uint16_t x, y;
+	uint8_t z;
+	while (!bufferEmpty()) {
+ 8f4:	0e 94 0b 04 	call	0x816	; 0x816 <bufferEmpty>
+ 8f8:	88 23       	and	r24, r24
+ 8fa:	91 f3       	breq	.-28     	; 0x8e0 <getPoint+0x1c>
+		readData(&x, &y, &z);
+	}
+	if (bufferEmpty())
+ 8fc:	0e 94 0b 04 	call	0x816	; 0x816 <bufferEmpty>
+ 900:	88 23       	and	r24, r24
+ 902:	21 f0       	breq	.+8      	; 0x90c <__stack+0xd>
+	{
+		writeReg8(STMPE_INT_STA, 0xFF); // reset
+ 904:	6f ef       	ldi	r22, 0xFF	; 255
+ 906:	8b e0       	ldi	r24, 0x0B	; 11
+ 908:	0e 94 a5 03 	call	0x74a	; 0x74a <writeReg8>
+	}
+
+
+	*p_X = x / 20;
+ 90c:	29 81       	ldd	r18, Y+1	; 0x01
+ 90e:	3a 81       	ldd	r19, Y+2	; 0x02
+ 910:	ad ec       	ldi	r26, 0xCD	; 205
+ 912:	bc ec       	ldi	r27, 0xCC	; 204
+ 914:	0e 94 39 06 	call	0xc72	; 0xc72 <__umulhisi3>
+ 918:	92 95       	swap	r25
+ 91a:	82 95       	swap	r24
+ 91c:	8f 70       	andi	r24, 0x0F	; 15
+ 91e:	89 27       	eor	r24, r25
+ 920:	9f 70       	andi	r25, 0x0F	; 15
+ 922:	89 27       	eor	r24, r25
+ 924:	f7 01       	movw	r30, r14
+ 926:	91 83       	std	Z+1, r25	; 0x01
+ 928:	80 83       	st	Z, r24
+	*p_Y = y / 15;
+ 92a:	2b 81       	ldd	r18, Y+3	; 0x03
+ 92c:	3c 81       	ldd	r19, Y+4	; 0x04
+ 92e:	a9 e8       	ldi	r26, 0x89	; 137
+ 930:	b8 e8       	ldi	r27, 0x88	; 136
+ 932:	0e 94 39 06 	call	0xc72	; 0xc72 <__umulhisi3>
+ 936:	96 95       	lsr	r25
+ 938:	87 95       	ror	r24
+ 93a:	96 95       	lsr	r25
+ 93c:	87 95       	ror	r24
+ 93e:	96 95       	lsr	r25
+ 940:	87 95       	ror	r24
+ 942:	f8 01       	movw	r30, r16
+ 944:	91 83       	std	Z+1, r25	; 0x01
+ 946:	80 83       	st	Z, r24
+}
+ 948:	0f 90       	pop	r0
+ 94a:	0f 90       	pop	r0
+ 94c:	0f 90       	pop	r0
+ 94e:	0f 90       	pop	r0
+ 950:	0f 90       	pop	r0
+ 952:	df 91       	pop	r29
+ 954:	cf 91       	pop	r28
+ 956:	1f 91       	pop	r17
+ 958:	0f 91       	pop	r16
+ 95a:	ff 90       	pop	r15
+ 95c:	ef 90       	pop	r14
+ 95e:	08 95       	ret
+
+00000960 <_ZN4GameC1Ev>:
+#include "game.h"
+
+Game::Game() {
+ 960:	cf 93       	push	r28
+ 962:	df 93       	push	r29
+ 964:	ec 01       	movw	r28, r24
+ 966:	0e 94 f5 04 	call	0x9ea	; 0x9ea <_ZN6PlayerC1Ev>
+ 96a:	80 ef       	ldi	r24, 0xF0	; 240
+ 96c:	90 e0       	ldi	r25, 0x00	; 0
+ 96e:	9d 83       	std	Y+5, r25	; 0x05
+ 970:	8c 83       	std	Y+4, r24	; 0x04
+ 972:	80 e4       	ldi	r24, 0x40	; 64
+ 974:	91 e0       	ldi	r25, 0x01	; 1
+ 976:	9f 83       	std	Y+7, r25	; 0x07
+ 978:	8e 83       	std	Y+6, r24	; 0x06
+}
+ 97a:	df 91       	pop	r29
+ 97c:	cf 91       	pop	r28
+ 97e:	08 95       	ret
+
+00000980 <_ZN4Game9startGameEv>:
+
+void Game::startGame()
+{
+ 980:	0f 93       	push	r16
+ 982:	1f 93       	push	r17
+ 984:	cf 93       	push	r28
+ 986:	df 93       	push	r29
+ 988:	00 d0       	rcall	.+0      	; 0x98a <_ZN4Game9startGameEv+0xa>
+ 98a:	00 d0       	rcall	.+0      	; 0x98c <_ZN4Game9startGameEv+0xc>
+ 98c:	cd b7       	in	r28, 0x3d	; 61
+ 98e:	de b7       	in	r29, 0x3e	; 62
+ 990:	8c 01       	movw	r16, r24
+	this->player = Player(this->xBounds / 2, this->yBounds - 50);
+ 992:	fc 01       	movw	r30, r24
+ 994:	46 81       	ldd	r20, Z+6	; 0x06
+ 996:	57 81       	ldd	r21, Z+7	; 0x07
+ 998:	42 53       	subi	r20, 0x32	; 50
+ 99a:	51 09       	sbc	r21, r1
+ 99c:	64 81       	ldd	r22, Z+4	; 0x04
+ 99e:	75 81       	ldd	r23, Z+5	; 0x05
+ 9a0:	76 95       	lsr	r23
+ 9a2:	67 95       	ror	r22
+ 9a4:	ce 01       	movw	r24, r28
+ 9a6:	01 96       	adiw	r24, 0x01	; 1
+ 9a8:	0e 94 ef 04 	call	0x9de	; 0x9de <_ZN6PlayerC1Ejj>
+ 9ac:	89 81       	ldd	r24, Y+1	; 0x01
+ 9ae:	9a 81       	ldd	r25, Y+2	; 0x02
+ 9b0:	ab 81       	ldd	r26, Y+3	; 0x03
+ 9b2:	bc 81       	ldd	r27, Y+4	; 0x04
+ 9b4:	f8 01       	movw	r30, r16
+ 9b6:	80 83       	st	Z, r24
+ 9b8:	91 83       	std	Z+1, r25	; 0x01
+ 9ba:	a2 83       	std	Z+2, r26	; 0x02
+ 9bc:	b3 83       	std	Z+3, r27	; 0x03
+}
+ 9be:	0f 90       	pop	r0
+ 9c0:	0f 90       	pop	r0
+ 9c2:	0f 90       	pop	r0
+ 9c4:	0f 90       	pop	r0
+ 9c6:	df 91       	pop	r29
+ 9c8:	cf 91       	pop	r28
+ 9ca:	1f 91       	pop	r17
+ 9cc:	0f 91       	pop	r16
+ 9ce:	08 95       	ret
+
+000009d0 <_ZN4Game12setPlayerPosEh>:
+
+void Game::setPlayerPos(uint8_t x) {
+	this->player.movePlayer(x);
+ 9d0:	70 e0       	ldi	r23, 0x00	; 0
+ 9d2:	0e 94 f6 04 	call	0x9ec	; 0x9ec <_ZN6Player10movePlayerEj>
+ 9d6:	08 95       	ret
+
+000009d8 <_ZN4Game6renderEv>:
+}
+
+void Game::render() {
+	this->player.renderPlayer();
+ 9d8:	0e 94 fa 04 	call	0x9f4	; 0x9f4 <_ZN6Player12renderPlayerEv>
+ 9dc:	08 95       	ret
+
+000009de <_ZN6PlayerC1Ejj>:
+#endif
+#include "player.h"
+#include <stdint.h>
+
+Player::Player(uint16_t xPos, uint16_t yPos) {
+	this->pxX = xPos;
+ 9de:	fc 01       	movw	r30, r24
+ 9e0:	71 83       	std	Z+1, r23	; 0x01
+ 9e2:	60 83       	st	Z, r22
+	this->pxY = yPos;
+ 9e4:	53 83       	std	Z+3, r21	; 0x03
+ 9e6:	42 83       	std	Z+2, r20	; 0x02
+ 9e8:	08 95       	ret
+
+000009ea <_ZN6PlayerC1Ev>:
+}
+
+Player::Player() {
+ 9ea:	08 95       	ret
+
+000009ec <_ZN6Player10movePlayerEj>:
+}
+
+void Player::movePlayer(uint16_t newXPos) {
+	this->pxX = newXPos;
+ 9ec:	fc 01       	movw	r30, r24
+ 9ee:	71 83       	std	Z+1, r23	; 0x01
+ 9f0:	60 83       	st	Z, r22
+ 9f2:	08 95       	ret
+
+000009f4 <_ZN6Player12renderPlayerEv>:
+}
+
+void Player::renderPlayer() {
+	drawBitmapPlayer(this->pxX, this->pxY);
+ 9f4:	fc 01       	movw	r30, r24
+ 9f6:	62 81       	ldd	r22, Z+2	; 0x02
+ 9f8:	73 81       	ldd	r23, Z+3	; 0x03
+ 9fa:	80 81       	ld	r24, Z
+ 9fc:	91 81       	ldd	r25, Z+1	; 0x01
+ 9fe:	0e 94 9f 02 	call	0x53e	; 0x53e <drawBitmapPlayer>
+ a02:	08 95       	ret
+
+00000a04 <_ZN10TextWriterC1Ev>:
+#endif
+#include "textWriter.h"
+#include <stdint.h>
+
+TextWriter::TextWriter() {
+	this->cursorX = 0;
+ a04:	fc 01       	movw	r30, r24
+ a06:	11 82       	std	Z+1, r1	; 0x01
+ a08:	10 82       	st	Z, r1
+	this->cursorY = 0;
+ a0a:	13 82       	std	Z+3, r1	; 0x03
+ a0c:	12 82       	std	Z+2, r1	; 0x02
+ a0e:	08 95       	ret
+
+00000a10 <_ZN10TextWriter12setCursorPosEjj>:
+}
+
+void TextWriter::setCursorPos(uint16_t xPos, uint16_t yPos) {
+	this->cursorX = xPos;
+ a10:	fc 01       	movw	r30, r24
+ a12:	71 83       	std	Z+1, r23	; 0x01
+ a14:	60 83       	st	Z, r22
+	this->cursorY = yPos;
+ a16:	53 83       	std	Z+3, r21	; 0x03
+ a18:	42 83       	std	Z+2, r20	; 0x02
+ a1a:	08 95       	ret
+
+00000a1c <_ZN10TextWriter8drawCharEc>:
+}
+
+void TextWriter::drawChar(char c) {
+ a1c:	fc 01       	movw	r30, r24
+	if (c == ' ') {c = 64;}
+ a1e:	60 32       	cpi	r22, 0x20	; 32
+ a20:	09 f4       	brne	.+2      	; 0xa24 <_ZN10TextWriter8drawCharEc+0x8>
+ a22:	60 e4       	ldi	r22, 0x40	; 64
+	uint8_t arrayIndex = c - 64;
+ a24:	40 ec       	ldi	r20, 0xC0	; 192
+ a26:	46 0f       	add	r20, r22
+
+	if (this->cursorX > ILI9341_TFTWIDTH-10) {
+ a28:	80 81       	ld	r24, Z
+ a2a:	91 81       	ldd	r25, Z+1	; 0x01
+ a2c:	87 3e       	cpi	r24, 0xE7	; 231
+ a2e:	91 05       	cpc	r25, r1
+ a30:	50 f0       	brcs	.+20     	; 0xa46 <_ZN10TextWriter8drawCharEc+0x2a>
+		this->cursorX = 10;
+ a32:	8a e0       	ldi	r24, 0x0A	; 10
+ a34:	90 e0       	ldi	r25, 0x00	; 0
+ a36:	91 83       	std	Z+1, r25	; 0x01
+ a38:	80 83       	st	Z, r24
+		this->cursorY += 10;
+ a3a:	82 81       	ldd	r24, Z+2	; 0x02
+ a3c:	93 81       	ldd	r25, Z+3	; 0x03
+ a3e:	0a 96       	adiw	r24, 0x0a	; 10
+ a40:	93 83       	std	Z+3, r25	; 0x03
+ a42:	82 83       	std	Z+2, r24	; 0x02
+ a44:	03 c0       	rjmp	.+6      	; 0xa4c <_ZN10TextWriter8drawCharEc+0x30>
+	} else {
+		this->cursorX += 10;
+ a46:	0a 96       	adiw	r24, 0x0a	; 10
+ a48:	91 83       	std	Z+1, r25	; 0x01
+ a4a:	80 83       	st	Z, r24
+	}
+	drawBitmapChar(this->cursorX, this->cursorY, arrayIndex);
+ a4c:	62 81       	ldd	r22, Z+2	; 0x02
+ a4e:	73 81       	ldd	r23, Z+3	; 0x03
+ a50:	80 81       	ld	r24, Z
+ a52:	91 81       	ldd	r25, Z+1	; 0x01
+ a54:	0e 94 c7 02 	call	0x58e	; 0x58e <drawBitmapChar>
+ a58:	08 95       	ret
+
+00000a5a <_ZN10TextWriter10drawStringEPch>:
+}
+
+void TextWriter::drawString(char *s, uint8_t length) {
+ a5a:	ef 92       	push	r14
+ a5c:	ff 92       	push	r15
+ a5e:	0f 93       	push	r16
+ a60:	1f 93       	push	r17
+ a62:	cf 93       	push	r28
+ a64:	df 93       	push	r29
+	uint8_t i = 0;
+	for (;i<length;i++) {
+ a66:	44 23       	and	r20, r20
+ a68:	81 f0       	breq	.+32     	; 0xa8a <_ZN10TextWriter10drawStringEPch+0x30>
+ a6a:	7c 01       	movw	r14, r24
+ a6c:	eb 01       	movw	r28, r22
+ a6e:	41 50       	subi	r20, 0x01	; 1
+ a70:	04 2f       	mov	r16, r20
+ a72:	10 e0       	ldi	r17, 0x00	; 0
+ a74:	0f 5f       	subi	r16, 0xFF	; 255
+ a76:	1f 4f       	sbci	r17, 0xFF	; 255
+ a78:	06 0f       	add	r16, r22
+ a7a:	17 1f       	adc	r17, r23
+		this->drawChar(s[i]);
+ a7c:	69 91       	ld	r22, Y+
+ a7e:	c7 01       	movw	r24, r14
+ a80:	0e 94 0e 05 	call	0xa1c	; 0xa1c <_ZN10TextWriter8drawCharEc>
+	drawBitmapChar(this->cursorX, this->cursorY, arrayIndex);
+}
+
+void TextWriter::drawString(char *s, uint8_t length) {
+	uint8_t i = 0;
+	for (;i<length;i++) {
+ a84:	c0 17       	cp	r28, r16
+ a86:	d1 07       	cpc	r29, r17
+ a88:	c9 f7       	brne	.-14     	; 0xa7c <_ZN10TextWriter10drawStringEPch+0x22>
+		this->drawChar(s[i]);
+	}
+ a8a:	df 91       	pop	r29
+ a8c:	cf 91       	pop	r28
+ a8e:	1f 91       	pop	r17
+ a90:	0f 91       	pop	r16
+ a92:	ff 90       	pop	r15
+ a94:	ef 90       	pop	r14
+ a96:	08 95       	ret
+
+00000a98 <startScreen_init>:
+	#ifdef __cplusplus
+}
+#endif
+
+
+void startScreen_init(){
+ a98:	7f 92       	push	r7
+ a9a:	8f 92       	push	r8
+ a9c:	9f 92       	push	r9
+ a9e:	af 92       	push	r10
+ aa0:	bf 92       	push	r11
+ aa2:	cf 92       	push	r12
+ aa4:	df 92       	push	r13
+ aa6:	ef 92       	push	r14
+ aa8:	ff 92       	push	r15
+ aaa:	0f 93       	push	r16
+ aac:	1f 93       	push	r17
+ aae:	cf 93       	push	r28
+ ab0:	df 93       	push	r29
+ ab2:	cd b7       	in	r28, 0x3d	; 61
+ ab4:	de b7       	in	r29, 0x3e	; 62
+ ab6:	28 97       	sbiw	r28, 0x08	; 8
+ ab8:	0f b6       	in	r0, 0x3f	; 63
+ aba:	f8 94       	cli
+ abc:	de bf       	out	0x3e, r29	; 62
+ abe:	0f be       	out	0x3f, r0	; 63
+ ac0:	cd bf       	out	0x3d, r28	; 61
+
+	NumberGenerator ng = NumberGenerator();
+	
+	//SchwarzerHintergrund
+	fillRect(0, 0, 125, 320, BLACK); 
+ ac2:	00 e0       	ldi	r16, 0x00	; 0
+ ac4:	10 e0       	ldi	r17, 0x00	; 0
+ ac6:	20 e4       	ldi	r18, 0x40	; 64
+ ac8:	31 e0       	ldi	r19, 0x01	; 1
+ aca:	4d e7       	ldi	r20, 0x7D	; 125
+ acc:	50 e0       	ldi	r21, 0x00	; 0
+ ace:	60 e0       	ldi	r22, 0x00	; 0
+ ad0:	70 e0       	ldi	r23, 0x00	; 0
+ ad2:	80 e0       	ldi	r24, 0x00	; 0
+ ad4:	90 e0       	ldi	r25, 0x00	; 0
+ ad6:	0e 94 16 02 	call	0x42c	; 0x42c <fillRect>
+	fillRect(100, 0, 200, 320, BLACK); 
+ ada:	20 e4       	ldi	r18, 0x40	; 64
+ adc:	31 e0       	ldi	r19, 0x01	; 1
+ ade:	48 ec       	ldi	r20, 0xC8	; 200
+ ae0:	50 e0       	ldi	r21, 0x00	; 0
+ ae2:	60 e0       	ldi	r22, 0x00	; 0
+ ae4:	70 e0       	ldi	r23, 0x00	; 0
+ ae6:	84 e6       	ldi	r24, 0x64	; 100
+ ae8:	90 e0       	ldi	r25, 0x00	; 0
+ aea:	0e 94 16 02 	call	0x42c	; 0x42c <fillRect>
+	fillRect(200, 0, 220, 320, BLACK); 
+ aee:	20 e4       	ldi	r18, 0x40	; 64
+ af0:	31 e0       	ldi	r19, 0x01	; 1
+ af2:	4c ed       	ldi	r20, 0xDC	; 220
+ af4:	50 e0       	ldi	r21, 0x00	; 0
+ af6:	60 e0       	ldi	r22, 0x00	; 0
+ af8:	70 e0       	ldi	r23, 0x00	; 0
+ afa:	88 ec       	ldi	r24, 0xC8	; 200
+ afc:	90 e0       	ldi	r25, 0x00	; 0
+ afe:	0e 94 16 02 	call	0x42c	; 0x42c <fillRect>
+ b02:	0f 2e       	mov	r0, r31
+ b04:	fa e0       	ldi	r31, 0x0A	; 10
+ b06:	af 2e       	mov	r10, r31
+ b08:	b1 2c       	mov	r11, r1
+ b0a:	f0 2d       	mov	r31, r0
+class NumberGenerator
+ b0c:	0f 2e       	mov	r0, r31
+ b0e:	fa e2       	ldi	r31, 0x2A	; 42
+ b10:	df 2e       	mov	r13, r31
+ b12:	f0 2d       	mov	r31, r0
+uint8_t seed = 42;
+};
+
+uint8_t NumberGenerator::getrndNo()
+{
+	this->seed = (this->seed*11) % 8;
+ b14:	0f 2e       	mov	r0, r31
+ b16:	fa e0       	ldi	r31, 0x0A	; 10
+ b18:	7f 2e       	mov	r7, r31
+ b1a:	f0 2d       	mov	r31, r0
+ b1c:	c1 2c       	mov	r12, r1
+ b1e:	9d 2d       	mov	r25, r13
+ b20:	99 0f       	add	r25, r25
+ b22:	9d 0d       	add	r25, r13
+ b24:	97 70       	andi	r25, 0x07	; 7
+ b26:	89 2f       	mov	r24, r25
+ b28:	88 0f       	add	r24, r24
+ b2a:	89 0f       	add	r24, r25
+ b2c:	87 70       	andi	r24, 0x07	; 7
+ b2e:	d8 2e       	mov	r13, r24
+ b30:	07 2d       	mov	r16, r7
+ b32:	1c 2d       	mov	r17, r12
+	for(int i = 0; i < 10; i++){
+		uint8_t n1 = ng.getrndNo();
+		uint8_t n2 = ng.getrndNo();
+		for(int j = 0; j < 10; j++){
+			
+			drawStar(n1, n2);			
+ b34:	88 2e       	mov	r8, r24
+ b36:	91 2c       	mov	r9, r1
+ b38:	e9 2e       	mov	r14, r25
+ b3a:	f1 2c       	mov	r15, r1
+ b3c:	b4 01       	movw	r22, r8
+ b3e:	c7 01       	movw	r24, r14
+ b40:	0e 94 f6 02 	call	0x5ec	; 0x5ec <drawStar>
+ b44:	01 50       	subi	r16, 0x01	; 1
+ b46:	11 09       	sbc	r17, r1
+	
+	//Sterne
+	for(int i = 0; i < 10; i++){
+		uint8_t n1 = ng.getrndNo();
+		uint8_t n2 = ng.getrndNo();
+		for(int j = 0; j < 10; j++){
+ b48:	c9 f7       	brne	.-14     	; 0xb3c <startScreen_init+0xa4>
+ b4a:	81 e0       	ldi	r24, 0x01	; 1
+ b4c:	a8 1a       	sub	r10, r24
+ b4e:	b1 08       	sbc	r11, r1
+	fillRect(100, 0, 200, 320, BLACK); 
+	fillRect(200, 0, 220, 320, BLACK); 
+	
+	
+	//Sterne
+	for(int i = 0; i < 10; i++){
+ b50:	31 f7       	brne	.-52     	; 0xb1e <startScreen_init+0x86>
+	}
+
+
+
+	//PRESS ANYWHERE TO START
+	TextWriter tw1 = TextWriter();
+ b52:	ce 01       	movw	r24, r28
+ b54:	05 96       	adiw	r24, 0x05	; 5
+ b56:	0e 94 02 05 	call	0xa04	; 0xa04 <_ZN10TextWriterC1Ev>
+	tw1.setCursorPos(45,240);
+ b5a:	40 ef       	ldi	r20, 0xF0	; 240
+ b5c:	50 e0       	ldi	r21, 0x00	; 0
+ b5e:	6d e2       	ldi	r22, 0x2D	; 45
+ b60:	70 e0       	ldi	r23, 0x00	; 0
+ b62:	ce 01       	movw	r24, r28
+ b64:	05 96       	adiw	r24, 0x05	; 5
+ b66:	0e 94 08 05 	call	0xa10	; 0xa10 <_ZN10TextWriter12setCursorPosEjj>
+	tw1.drawString("PRESS ANYWHERE", 14);
+ b6a:	4e e0       	ldi	r20, 0x0E	; 14
+ b6c:	61 e0       	ldi	r22, 0x01	; 1
+ b6e:	73 e0       	ldi	r23, 0x03	; 3
+ b70:	ce 01       	movw	r24, r28
+ b72:	05 96       	adiw	r24, 0x05	; 5
+ b74:	0e 94 2d 05 	call	0xa5a	; 0xa5a <_ZN10TextWriter10drawStringEPch>
+	
+	TextWriter tw2 = TextWriter();
+ b78:	ce 01       	movw	r24, r28
+ b7a:	01 96       	adiw	r24, 0x01	; 1
+ b7c:	0e 94 02 05 	call	0xa04	; 0xa04 <_ZN10TextWriterC1Ev>
+	tw2.setCursorPos(80,250);
+ b80:	4a ef       	ldi	r20, 0xFA	; 250
+ b82:	50 e0       	ldi	r21, 0x00	; 0
+ b84:	60 e5       	ldi	r22, 0x50	; 80
+ b86:	70 e0       	ldi	r23, 0x00	; 0
+ b88:	ce 01       	movw	r24, r28
+ b8a:	01 96       	adiw	r24, 0x01	; 1
+ b8c:	0e 94 08 05 	call	0xa10	; 0xa10 <_ZN10TextWriter12setCursorPosEjj>
+	tw2.drawString("TO MOVE", 7);
+ b90:	47 e0       	ldi	r20, 0x07	; 7
+ b92:	60 e1       	ldi	r22, 0x10	; 16
+ b94:	73 e0       	ldi	r23, 0x03	; 3
+ b96:	ce 01       	movw	r24, r28
+ b98:	01 96       	adiw	r24, 0x01	; 1
+ b9a:	0e 94 2d 05 	call	0xa5a	; 0xa5a <_ZN10TextWriter10drawStringEPch>
+}
+ b9e:	28 96       	adiw	r28, 0x08	; 8
+ ba0:	0f b6       	in	r0, 0x3f	; 63
+ ba2:	f8 94       	cli
+ ba4:	de bf       	out	0x3e, r29	; 62
+ ba6:	0f be       	out	0x3f, r0	; 63
+ ba8:	cd bf       	out	0x3d, r28	; 61
+ baa:	df 91       	pop	r29
+ bac:	cf 91       	pop	r28
+ bae:	1f 91       	pop	r17
+ bb0:	0f 91       	pop	r16
+ bb2:	ff 90       	pop	r15
+ bb4:	ef 90       	pop	r14
+ bb6:	df 90       	pop	r13
+ bb8:	cf 90       	pop	r12
+ bba:	bf 90       	pop	r11
+ bbc:	af 90       	pop	r10
+ bbe:	9f 90       	pop	r9
+ bc0:	8f 90       	pop	r8
+ bc2:	7f 90       	pop	r7
+ bc4:	08 95       	ret
+
+00000bc6 <main>:
+
+
+uint16_t pxX = ILI9341_TFTWIDTH / 2;
+uint16_t pxY = ILI9341_TFTHEIGHT - 50;
+int main(void)
+{
+ bc6:	cf 93       	push	r28
+ bc8:	df 93       	push	r29
+ bca:	cd b7       	in	r28, 0x3d	; 61
+ bcc:	de b7       	in	r29, 0x3e	; 62
+ bce:	28 97       	sbiw	r28, 0x08	; 8
+ bd0:	0f b6       	in	r0, 0x3f	; 63
+ bd2:	f8 94       	cli
+ bd4:	de bf       	out	0x3e, r29	; 62
+ bd6:	0f be       	out	0x3f, r0	; 63
+ bd8:	cd bf       	out	0x3d, r28	; 61
+	Serial_begin();
+ bda:	0e 94 51 03 	call	0x6a2	; 0x6a2 <Serial_begin>
+	controller_begin();
+ bde:	0e 94 79 00 	call	0xf2	; 0xf2 <controller_begin>
+	
+	if (!touch_begin())
+ be2:	0e 94 b6 03 	call	0x76c	; 0x76c <touch_begin>
+ be6:	81 11       	cpse	r24, r1
+ be8:	04 c0       	rjmp	.+8      	; 0xbf2 <main+0x2c>
+	{
+		printf("No Touch!\n");
+ bea:	88 e1       	ldi	r24, 0x18	; 24
+ bec:	93 e0       	ldi	r25, 0x03	; 3
+ bee:	0e 94 48 06 	call	0xc90	; 0xc90 <puts>
+	}
+
+	Game game = Game();
+ bf2:	ce 01       	movw	r24, r28
+ bf4:	01 96       	adiw	r24, 0x01	; 1
+ bf6:	0e 94 b0 04 	call	0x960	; 0x960 <_ZN4GameC1Ev>
+	game.startGame();
+ bfa:	ce 01       	movw	r24, r28
+ bfc:	01 96       	adiw	r24, 0x01	; 1
+ bfe:	0e 94 c0 04 	call	0x980	; 0x980 <_ZN4Game9startGameEv>
+	startScreen_init();
+ c02:	0e 94 4c 05 	call	0xa98	; 0xa98 <startScreen_init>
+
+	while (1)
+	{
+		if (bufferEmpty()) {
+ c06:	0e 94 0b 04 	call	0x816	; 0x816 <bufferEmpty>
+ c0a:	88 23       	and	r24, r24
+ c0c:	49 f0       	breq	.+18     	; 0xc20 <main+0x5a>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ c0e:	2f e7       	ldi	r18, 0x7F	; 127
+ c10:	8c e9       	ldi	r24, 0x9C	; 156
+ c12:	91 e0       	ldi	r25, 0x01	; 1
+ c14:	21 50       	subi	r18, 0x01	; 1
+ c16:	80 40       	sbci	r24, 0x00	; 0
+ c18:	90 40       	sbci	r25, 0x00	; 0
+ c1a:	e1 f7       	brne	.-8      	; 0xc14 <main+0x4e>
+ c1c:	00 c0       	rjmp	.+0      	; 0xc1e <main+0x58>
+ c1e:	00 00       	nop
+			_delay_ms(33);
+		}
+		if (!touched()) {
+ c20:	0e 94 06 04 	call	0x80c	; 0x80c <touched>
+ c24:	81 11       	cpse	r24, r1
+ c26:	0a c0       	rjmp	.+20     	; 0xc3c <main+0x76>
+ c28:	2f e7       	ldi	r18, 0x7F	; 127
+ c2a:	8c e9       	ldi	r24, 0x9C	; 156
+ c2c:	91 e0       	ldi	r25, 0x01	; 1
+ c2e:	21 50       	subi	r18, 0x01	; 1
+ c30:	80 40       	sbci	r24, 0x00	; 0
+ c32:	90 40       	sbci	r25, 0x00	; 0
+ c34:	e1 f7       	brne	.-8      	; 0xc2e <main+0x68>
+ c36:	00 c0       	rjmp	.+0      	; 0xc38 <main+0x72>
+ c38:	00 00       	nop
+ c3a:	16 c0       	rjmp	.+44     	; 0xc68 <main+0xa2>
+			_delay_ms(33);
+		} 
+		else
+		{
+			drawPixel(pxX, ILI9341_TFTHEIGHT - 50, BLACK);
+ c3c:	40 e0       	ldi	r20, 0x00	; 0
+ c3e:	50 e0       	ldi	r21, 0x00	; 0
+ c40:	6e e0       	ldi	r22, 0x0E	; 14
+ c42:	71 e0       	ldi	r23, 0x01	; 1
+ c44:	80 91 f5 02 	lds	r24, 0x02F5	; 0x8002f5 <pxX>
+ c48:	90 91 f6 02 	lds	r25, 0x02F6	; 0x8002f6 <pxX+0x1>
+ c4c:	0e 94 ec 01 	call	0x3d8	; 0x3d8 <drawPixel>
+			getPoint(&pxX, &pxY);
+ c50:	63 ef       	ldi	r22, 0xF3	; 243
+ c52:	72 e0       	ldi	r23, 0x02	; 2
+ c54:	85 ef       	ldi	r24, 0xF5	; 245
+ c56:	92 e0       	ldi	r25, 0x02	; 2
+ c58:	0e 94 62 04 	call	0x8c4	; 0x8c4 <getPoint>
+			game.setPlayerPos(pxX);
+ c5c:	60 91 f5 02 	lds	r22, 0x02F5	; 0x8002f5 <pxX>
+ c60:	ce 01       	movw	r24, r28
+ c62:	01 96       	adiw	r24, 0x01	; 1
+ c64:	0e 94 e8 04 	call	0x9d0	; 0x9d0 <_ZN4Game12setPlayerPosEh>
+		}
+		game.render();
+ c68:	ce 01       	movw	r24, r28
+ c6a:	01 96       	adiw	r24, 0x01	; 1
+ c6c:	0e 94 ec 04 	call	0x9d8	; 0x9d8 <_ZN4Game6renderEv>
+	}
+ c70:	ca cf       	rjmp	.-108    	; 0xc06 <main+0x40>
+
+00000c72 <__umulhisi3>:
+ c72:	a2 9f       	mul	r26, r18
+ c74:	b0 01       	movw	r22, r0
+ c76:	b3 9f       	mul	r27, r19
+ c78:	c0 01       	movw	r24, r0
+ c7a:	a3 9f       	mul	r26, r19
+ c7c:	70 0d       	add	r23, r0
+ c7e:	81 1d       	adc	r24, r1
+ c80:	11 24       	eor	r1, r1
+ c82:	91 1d       	adc	r25, r1
+ c84:	b2 9f       	mul	r27, r18
+ c86:	70 0d       	add	r23, r0
+ c88:	81 1d       	adc	r24, r1
+ c8a:	11 24       	eor	r1, r1
+ c8c:	91 1d       	adc	r25, r1
+ c8e:	08 95       	ret
+
+00000c90 <puts>:
+ c90:	0f 93       	push	r16
+ c92:	1f 93       	push	r17
+ c94:	cf 93       	push	r28
+ c96:	df 93       	push	r29
+ c98:	e0 91 24 03 	lds	r30, 0x0324	; 0x800324 <__data_end+0x2>
+ c9c:	f0 91 25 03 	lds	r31, 0x0325	; 0x800325 <__data_end+0x3>
+ ca0:	23 81       	ldd	r18, Z+3	; 0x03
+ ca2:	21 ff       	sbrs	r18, 1
+ ca4:	1b c0       	rjmp	.+54     	; 0xcdc <puts+0x4c>
+ ca6:	8c 01       	movw	r16, r24
+ ca8:	d0 e0       	ldi	r29, 0x00	; 0
+ caa:	c0 e0       	ldi	r28, 0x00	; 0
+ cac:	f8 01       	movw	r30, r16
+ cae:	81 91       	ld	r24, Z+
+ cb0:	8f 01       	movw	r16, r30
+ cb2:	60 91 24 03 	lds	r22, 0x0324	; 0x800324 <__data_end+0x2>
+ cb6:	70 91 25 03 	lds	r23, 0x0325	; 0x800325 <__data_end+0x3>
+ cba:	db 01       	movw	r26, r22
+ cbc:	18 96       	adiw	r26, 0x08	; 8
+ cbe:	ed 91       	ld	r30, X+
+ cc0:	fc 91       	ld	r31, X
+ cc2:	19 97       	sbiw	r26, 0x09	; 9
+ cc4:	88 23       	and	r24, r24
+ cc6:	31 f0       	breq	.+12     	; 0xcd4 <puts+0x44>
+ cc8:	09 95       	icall
+ cca:	89 2b       	or	r24, r25
+ ccc:	79 f3       	breq	.-34     	; 0xcac <puts+0x1c>
+ cce:	df ef       	ldi	r29, 0xFF	; 255
+ cd0:	cf ef       	ldi	r28, 0xFF	; 255
+ cd2:	ec cf       	rjmp	.-40     	; 0xcac <puts+0x1c>
+ cd4:	8a e0       	ldi	r24, 0x0A	; 10
+ cd6:	09 95       	icall
+ cd8:	89 2b       	or	r24, r25
+ cda:	19 f0       	breq	.+6      	; 0xce2 <puts+0x52>
+ cdc:	8f ef       	ldi	r24, 0xFF	; 255
+ cde:	9f ef       	ldi	r25, 0xFF	; 255
+ ce0:	02 c0       	rjmp	.+4      	; 0xce6 <puts+0x56>
+ ce2:	8d 2f       	mov	r24, r29
+ ce4:	9c 2f       	mov	r25, r28
+ ce6:	df 91       	pop	r29
+ ce8:	cf 91       	pop	r28
+ cea:	1f 91       	pop	r17
+ cec:	0f 91       	pop	r16
+ cee:	08 95       	ret
+
+00000cf0 <_exit>:
+ cf0:	f8 94       	cli
+
+00000cf2 <__stop_program>:
+ cf2:	ff cf       	rjmp	.-2      	; 0xcf2 <__stop_program>
