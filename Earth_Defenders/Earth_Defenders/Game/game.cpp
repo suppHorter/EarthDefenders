@@ -1,13 +1,17 @@
-#ifndef GAME_CPP
-#define GAME_CPP
-#include "player.h"
 #include "game.h"
 
-Game::Game();
-
-void Game::startGame() {
-	Player: player = new Player(20, (uint16_t)ILI9341_TFTHEIGHT/2);
-	player.show();
+Game::Game() {
 }
 
-#endif
+void Game::startGame()
+{
+	this->player = Player(40, 40);
+}
+
+void Game::setPlayerPos(uint8_t x) {
+	this->player.movePlayer(x);
+}
+
+void Game::render() {
+	this->player.renderPlayer();
+}

@@ -89,8 +89,8 @@ void getPoint(uint16_t *p_X, uint16_t *p_Y)
 	}
 
 
-	*p_X = x / 10;
-	*p_Y = y / 10;
+	*p_X = x / 19;
+	*p_Y = y / 15;
 }
 
 void scalePoint(uint16_t *x, uint16_t *y) 

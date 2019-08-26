@@ -10,5 +10,11 @@ Display\SPI.c
 
 Display\Touch.c
 
+Game\game.cpp
+
+Game\player.cpp
+
+Game\textWriter.cpp
+
 main.cpp
 

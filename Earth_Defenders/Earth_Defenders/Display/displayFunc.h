@@ -3,6 +3,7 @@
 
 #define F_CPU 16000000
 #include<util/delay.h>#include<avr/io.h>
+#include <stdbool.h>
 
 #define ILI9341_TFTHEIGHT 320
 #define ILI9341_TFTWIDTH 240
@@ -81,7 +82,8 @@
 #define GREENYELLOW 0xAFE5
 #define PINK        0xF81F
 
-#define PXSIZE 3
+#define PXSIZE 30
+#define BITMAP_SIZE 30
 
 void controller_begin();
 void resetDisplay();
@@ -92,4 +94,7 @@ void write565(uint16_t data, uint32_t count);
 void drawPixel (uint16_t x, uint16_t y, uint16_t color);
 void fillRect (uint16_t x0, uint16_t y0, uint16_t w, uint16_t h, uint16_t color);
 
+void drawBitmapPlayer(uint16_t x, uint16_t y);
+void drawBitmapChar(uint16_t x, uint16_t y, uint8_t charArrayIndex);
+void writeBitmap(uint8_t data[], uint32_t count, uint16_t col);
 #endif

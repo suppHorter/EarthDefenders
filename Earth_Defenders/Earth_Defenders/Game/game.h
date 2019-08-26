@@ -1,18 +1,15 @@
 #ifndef GAME_H
 #define GAME_H
+#include "player.h"
 
 class Game {
 	private:
-	Game(Player player)
-	Player player;
+		Player player;
 
 	public:
-	startGame();
-}
-
-
-Game::Game();
-
-void Game::startGame();
-
+		Game();
+		void startGame();
+		void render();
+		void setPlayerPos(uint8_t x);
+};
 #endif
