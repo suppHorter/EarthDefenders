@@ -2,11 +2,24 @@
 	<head>
 	</head>
 	<body>
-	<table id="bmTable">
-	</table>
+		<p>Erase | Draw | Lock</p>
+		<p>Keys:  E   |   D  |    L   </p>
+		<p></p>
+		<p></p>
+		<table id="bmTable"></table>
+		<button onclick="getBitmapArray()">Get Bitmap</button>
+		y
+		<p>toHex:</p>
+		<input type="text" id="toHex" value="0x00"></input>
+		<p>paste Bitmap Data to show: </p>
+		<input type="text" id="inputData" value=""></input>
+		<p>Bounds X:</p>
+		<input type="text" id="bound_X" value="10"></input>
+		<p>Bounds Y:</p>
+		<input type="text" id="bound_Y" value="10"></input>
+		<button onclick="showBitmapData()">Set Bitmap</button>
+		<table id="showTable"></table>
+		
 	</body>
-	D = Draw
-	E = Erase
-	<button onclick="getBitmapArray()">Get Bitmap</button>
 	<script src="bmCreator.js"></script>	
 </html>
